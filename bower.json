@@ -13,6 +13,22 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.4.4"
-  }
+    "angular": "~1.4.4",
+    "angular-ui": "~0.4.0",
+    "angular-ui-router": "~0.2.15",
+    "jquery": "~2.1.4",
+    "bootstrap-css": "~3.3.4",
+    "fontawesome": "~4.4.0"
+  },
+  "devDependencies": {},
+  "overrides": {
+      "fontawesome": {
+        "main": [
+          "./css/font-awesome.min.css",
+          "./fonts/fontawesome-webfont.woff",
+          "./fonts/fontawesome-webfont.woff2",
+          "./fonts/fontawesome-webfont.ttf"
+        ]
+      }
+    }
 }
