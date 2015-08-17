@@ -16,18 +16,22 @@ var paths = {
   // Destinations
   temp: 'temp',
   tempVendor: 'temp/resources/js/vendor',
+
   tempStyles: 'temp/resources/css',
   tempStylesVendor: 'temp/resources/css/vendor',
   tempStylesFonts: 'temp/resources/css/fonts',
 
   tempIndex:  'temp/index.html',
+  tempViews: 'temp/views',
 
   // Source
   index: 'app/index.html',
+  views: 'app/views/**/*',
+
+  // Source Resources
   appSrc:  ['app/**/*.js', '!app/index.html'],
   appStyles: 'app/resources/styles/**/*.css',
   bowerSrc: 'bower_components/**/*'
-
 };
 
 gulp.task('default', ['watch']);
@@ -37,6 +41,7 @@ gulp.task('watch', ['serve'], function(){
 	gulp.watch(paths.appSrc, ['scripts']);
   gulp.watch(paths.appStyles, ['styles']);
 	gulp.watch(paths.bowerSrc, ['vendors']);
+  gulp.watch(paths.views, ['views']);
 	gulp.watch(paths.index, ['copyAll']);
 });
 
@@ -46,9 +51,10 @@ gulp.task('serve', ['copyAll'], function(){
 	return gulp.src(paths.temp)
 			.pipe(webserver({
 				livereload: true,
+        host: '0.0.0.0',
 				proxies: [{
 						source: '/api',
-						target: 'http://localhost:1337'
+						target: 'http://localhost:1337/api'
 				}]
 			}));
 });
@@ -64,6 +70,8 @@ gulp.task('copyAll', function(){
     var tempStylesVendors =   gulp.src(mainBowerFiles({ filter: /.*\.css$/i  })).pipe(gulp.dest(paths.tempStylesVendor));
     var tempFontsVendors =    gulp.src(mainBowerFiles({ filter: /.*\.(tff|woff2|woff)$/i  })).pipe(gulp.dest(paths.tempStylesFonts));
 
+    // Copy Views
+    gulp.src(['app/views/**/*']).pipe(gulp.dest('temp/views'));
 
 		return gulp.src(paths.index)
 
@@ -102,6 +110,14 @@ gulp.task('copyAll', function(){
 
 });
 
+gulp.task('views', function(){
+
+    // Views
+		return gulp.src(['app/views/**/*']).pipe(gulp.dest('temp/views'));
+
+});
+
+
 gulp.task('vendors', function(){
 
   var tempVendors = gulp.src(mainBowerFiles({ filter: /.*\.js$/i  })).pipe(gulp.dest(paths.tempVendor));
@@ -134,10 +150,12 @@ gulp.task('styles', function(){
         relative: true,
         name: 'vendorInject'
       }))
+
       .pipe(inject(tempFontsVendors, {
         relative: true,
         name: 'vendorInject'
       }))
+
 			.pipe(inject(tempStyles, {
 				relative: true
 			}))
@@ -151,7 +169,7 @@ gulp.task('scripts', function(){
 	return gulp.src(paths.tempIndex)
 		.pipe(inject(appFiles, {
 			relative: true
-		}).pipe(angularFileSort()))
+		}))
 		.pipe(gulp.dest(paths.temp));
 
 });

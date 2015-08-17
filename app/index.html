@@ -10,39 +10,18 @@
 </head>
 <body ng-controller="mainController as main">
 
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#"><i class="fa fa-users"></i> blondie</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav" ng-if="main.isLoggedIn()">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-          <ul class="nav navbar-nav pull-right">
-            <li ng-if="main.isLoggedIn()"><a href="#">Login</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+    <div ng-include src="'/views/partials/partial.mainmenu.html'"></div>
 
-    <div class="container site-body">
+    <div class="container site-body ui-view-container" >
 
+      <!-- UI STATE DIRECTIVE -->
       <div ui-view>
-
-
 
       </div>
 
     </div><!-- /.container -->
+
+    <div ng-if="!main.isLoggedIn()" ng-include src="'/views/partials/partial.signin.html'"></div>
 
   <!-- vendorInject:js -->
   <!-- endinject -->
