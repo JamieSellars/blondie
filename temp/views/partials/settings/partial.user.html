@@ -1,0 +1,72 @@
+<br /><button class="btn btn-xs btn-primary" ng-click="settings.users.add = !settings.users.add">add new user</button><br /><br />
+<table class="table table-hover table-condensed" ng-show="!settings.users.add">
+    <tr>
+        <th>Username</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Role</th>
+    </tr>
+    <tr>
+        <td><a href="#">lchapman</a></td>
+        <td>Lucy</td>
+        <td>Chapman</td>
+        <td>Supervisor</td>
+    </tr>
+</table>
+
+<form ng-submit="settings.users.save()" name="createuserForm" novalidate="" autocomplete="off" ng-show="settings.users.add">
+
+<div ng-show="user.error" class="alert alert-danger btn-block">{{ signin.error }}</div>
+
+  <div class="control-group">
+    <!-- First name -->
+    <label class="control-label" for="email">First name</label>
+    <div class="controls">
+      <input type="text" ng-model="settings.users.formdata.firstname" class="form-control" id="firstname" name="firstname" placeholder="first name" required>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <!-- First name -->
+    <label class="control-label" for="email">Last name</label>
+    <div class="controls">
+      <input type="text" ng-model="settings.users.formdata.lastname" class="form-control" id="firstname" name="lastname" placeholder="last name" required>
+    </div>
+  </div>
+
+  <div class="control-group hide">
+    <!-- Username -->
+    <label class="control-label" for="email">Username</label>
+    <div class="controls">
+      <input type="text" class="form-control" id="username" name="username" disabled ng-model="settings.users.formdata.username">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <!-- E-mail -->
+    <label class="control-label" for="email">E-mail</label>
+    <div class="controls">
+      <input type="text" class="form-control" id="email" name="email" placeholder="email"  ng-model="settings.users.formdata.email" >
+    </div>
+  </div>
+
+  <div class="control-group">
+    <!-- Password-->
+    <label class="control-label" for="password">Password</label>
+    <div class="controls">
+      <input type="password" id="password" name="password" placeholder="password" class="form-control"  ng-model="settings.users.formdata.password" required>
+    </div>
+    <label class="control-label" for="password">Confirm Password</label>
+    <div class="controls">
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="confirm password" class="form-control"  ng-model="settings.users.formdata.confirmPassword" same-as="settings.users.formdata.password" required>
+      <p class="control-label text-danger" ng-show="createuserForm.confirmPassword.$dirty && createuserForm.confirmPassword.$invalid">please ensure passwords match</p>
+    </div>
+  </div>
+  <br />
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-success btn-block" ng-disabled="createuserForm.$invalid">Create User</button>
+    </div>
+  </div>
+
+</form>

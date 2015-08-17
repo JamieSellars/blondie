@@ -1,0 +1,34 @@
+<div class="lead"><h2><i class="small fa fa-cogs"></i> {{ settings.title }}</h2></div>
+<br />
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="settings/#category" aria-controls="category" role="tab" data-toggle="tab">categories</a></li>
+    <li role="presentation"><a href="settings/#status" aria-controls="status" role="tab" data-toggle="tab">statuses</a></li>
+    <li role="presentation"><a href="settings/#source" aria-controls="status" role="tab" data-toggle="tab">sources</a></li>
+    <li role="presentation"><a href="settings/#users" aria-controls="users" role="tab" data-toggle="tab">users</a></li>
+</ul>
+
+<!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="category">
+        <h3>category types</h3>
+        <p>Manage your call center categories</p>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="status">
+        <h3>status types</h3>
+        <p>Assign different status types for your enqueries</p>
+        <p>Defaults: <span class="label label-default">completed</span><span class="label label-success">open</span></p>
+        <div ng-include="'/views/partials/settings/partial.status.html'"></div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="source">
+        <h3>sources</h3>
+        <p>Create types for enquiry types </p>
+        <p>Defaults: <span class="label label-primary">phone</span><span class="label label-default">email</span><span class="label label-warning">web</span></p>
+        <div ng-include="'/views/partials/settings/partial.sources.html'"></div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="users">
+        <h3>users</h3>
+        <p>Manage your call centre attendants</p>
+        <div ng-include="'/views/partials/settings/partial.user.html'"></div>
+    </div>
+  </div>
+</div>
