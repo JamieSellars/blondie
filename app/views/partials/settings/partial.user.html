@@ -69,4 +69,9 @@
     </div>
   </div>
 
+  <div style="margin-top: 20px;" class="alert alert-{{ alert.type }} animate main-alert" ng-class="{ 'fadeInLeftBig': alert.show, 'fadeOutLeftBig': !alert.hide, 'alert-hidden':!alert.hasBeenShown }">
+      <strong>{{ alert.title }}</strong>
+      {{ alert.message }}
+  </div>
+
 </form>

@@ -20,7 +20,8 @@
     "bootstrap-css": "~3.3.4",
     "fontawesome": "~4.4.0",
     "angular-animate": "~1.4.4",
-    "angular-bootstrap": "~0.13.3"
+    "angular-bootstrap": "~0.13.3",
+    "animate.css": "~3.4.0"
   },
   "devDependencies": {},
   "overrides": {
