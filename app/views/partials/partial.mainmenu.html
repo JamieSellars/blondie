@@ -11,20 +11,30 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li ui-sref-active="active"><a ui-sref="home">Home</a></li>
-          <li ui-sref-active="active"><a ui-sref="settings">Settings</a></li>
-
+          <li ui-sref-active="active"><a ui-sref="home">Dashboard</a></li>
+          <li>
+            <ul class="nav navbar-nav">
+              <li ui-sref-active="active" >
+                <a href="#" class="dropdown-toggle" ui-sref-active="active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Tickets <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li ui-sref-active="active"><a ui-sref="tickets.all">Tickets</a></li>
+                      <li ui-sref-active="active"><a ui-sref="tickets.create">Create New Ticket</a></li>
+                  </ul>
+              </li>
+            </ul>
+          </li>
+          <li ui-sref-active="active"><a ui-sref="settings" ng-if="main.user.isManager">Settings</a></li>
         </ul>
         <ul class="nav navbar-nav pull-right">
-          <li ng-if="main.isLoggedIn()">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">user {{ main.user.fullname }} <span class="caret"></span></a>
+          <li ng-if="main.loggedIn">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ main.user.firstname }} {{ main.user.lastname }}  <span class="caret"></span></a>
 
               <ul class="dropdown-menu">
-                  <li><a sref="/me">Change Password</a></li>
-                  <li><a sref="/signout">Sign Out</a></li>
+                  <li><a ui-sref="changepassword">Change Password</a></li>
+                  <li><a href="#" ng-click="main.logout()"><i class="fa fa-sign-out"></i> Logout</a></li>
               </ul>
           </li>
         </ul>
-      </div><!--/.nav-collapse -->
+      </div><!--/.nav-col lapse -->
     </div>
   </nav>

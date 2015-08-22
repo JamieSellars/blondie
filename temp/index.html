@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="resources/css/vendor/bootstrap.min.css">
   <link rel="stylesheet" href="resources/css/vendor/font-awesome.min.css">
   <link rel="stylesheet" href="resources/css/vendor/animate.css">
+  <link rel="stylesheet" href="resources/css/vendor/bootstrap-toggle.min.css">
   <!-- endinject -->
 
   <!-- inject:css -->
@@ -15,9 +16,9 @@
 </head>
 <body ng-controller="mainController as main">
 
-    <div ng-include src="'/views/partials/partial.mainmenu.html'"></div>
+    <div ng-include src="'/views/partials/partial.mainmenu.html'" ng-if="main.loggedIn"></div>
 
-    <div class="container site-body ui-view-container" >
+    <div class="container site-body ui-view-container" ng-if="main.loggedIn">
 
       <!-- UI STATE DIRECTIVE -->
       <div ui-view>
@@ -27,7 +28,7 @@
 
     </div><!-- /.container -->
 
-    <div ng-if="!main.isLoggedIn()" ng-include src="'/views/partials/partial.signin.html'"></div>
+    <div ng-if="!main.loggedIn" ng-include src="'/views/partials/partial.signin.html'"></div>
 
   <!-- vendorInject:js -->
   <script src="resources/js/vendor/angular.js"></script>
@@ -36,18 +37,34 @@
   <script src="resources/js/vendor/bootstrap.min.js"></script>
   <script src="resources/js/vendor/angular-animate.js"></script>
   <script src="resources/js/vendor/ui-bootstrap-tpls.js"></script>
+  <script src="resources/js/vendor/bootstrap-toggle.min.js"></script>
   <!-- endinject -->
 
   <!-- inject:js -->
   <script src="app.js"></script>
   <script src="config/app.config.js"></script>
-  <script src="controllers/controller.home.js"></script>
+  <script src="controllers/controller.dashboard.js"></script>
   <script src="controllers/controller.main.js"></script>
-  <script src="controllers/controller.settings.js"></script>
+  <script src="controllers/controller.me.js"></script>
   <script src="directives/directive.sameas.js"></script>
   <script src="services/service.auth.js"></script>
-  <script src="services/service.settings.js"></script>
   <script src="services/services.alert.js"></script>
+  <script src="controllers/settings/controller.settings.categories.js"></script>
+  <script src="controllers/settings/controller.settings.sources.js"></script>
+  <script src="controllers/settings/controller.settings.statuses.js"></script>
+  <script src="controllers/settings/controller.settings.subcategories.js"></script>
+  <script src="controllers/settings/controller.settings.types.js"></script>
+  <script src="controllers/settings/controller.settings.users.js"></script>
+  <script src="controllers/tickets/controller.tickets.create.js"></script>
+  <script src="controllers/tickets/controller.tickets.js"></script>
+  <script src="services/settings/service.settings.categories.js"></script>
+  <script src="services/settings/service.settings.sources.js"></script>
+  <script src="services/settings/service.settings.statuses.js"></script>
+  <script src="services/settings/service.settings.subcategories.js"></script>
+  <script src="services/settings/service.settings.types.js"></script>
+  <script src="services/settings/service.settings.users.js"></script>
+  <script src="services/tickets/service.tickets.js"></script>
+  <script src="services/tickets/service.tickets.properties.js"></script>
   <!-- endinject -->
 </body>
 </html>
