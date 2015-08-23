@@ -1,0 +1,22 @@
+<div class="col-sm-7 no-padding-left">
+  <table class="table table-condensed table-hover animated fadeILeft">
+
+  <tr>
+    <th>{{ statistics.statisticQuery }}</th>
+    <th>open</th>
+    <th>closed</th>
+    <th>total</th>
+  </tr>
+
+  <tr ng-repeat="stat in statistics.data">
+    <td>{{ stat.name }}</td>
+    <td>{{ stat.open }}</td>
+    <td>{{ stat.closed }}</td>
+    <td>{{ stat.total }}</td>
+  </tr>
+
+</table>
+</div>
+<div class="col-sm-5 no-padding-left">
+  <canvas id="doughnut" class="chart chart-doughnut " data="statistics.chartdata" labels="statistics.labels"></canvas>
+</div>

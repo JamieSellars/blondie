@@ -26,7 +26,7 @@ angular.module('app').controller('sourcesSettingsController', ['$scope','setting
       create: function(){
         // create username string
         settingsSourcesService.save(vm.sources.formdata).then(function success(d){
-            alertService('success', 'User Created!', d.data.name + ' has been created.');
+            alertService('success', 'Created!', d.data.name + ' has been created.');
             vm.sources.formdata = {};
             vm.sources.add = false;
             vm.sources.get();

@@ -24,7 +24,7 @@ angular.module('app')
 .config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider){
     // Unsatifised routes / states
     $urlRouterProvider.when('/settings', 'settings/categories');
-    $urlRouterProvider.when('/dashboard/statistics', 'dashboard/statistics/category');
+    $urlRouterProvider.when('/dashboard', 'dashboard/statistics/categories');
     //$urlRouterProvider.when('/tickets', 'tickets/all');
 
     $urlRouterProvider.otherwise("/dashboard");

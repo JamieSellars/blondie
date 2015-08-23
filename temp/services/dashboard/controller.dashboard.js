@@ -30,10 +30,4 @@ angular.module('app').controller('dashboardController',['$scope', 'ticketService
 
     });
 
-
-
-
-
-
-
 }]);

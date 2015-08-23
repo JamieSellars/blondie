@@ -76,8 +76,12 @@
     <div class="col-sm-7 no-padding-left">
 
         <h3>ticket statistics</h3>
-
-        <ul class="nav nav-tabs ng-scope">
+        <script>
+        $(function(){
+          $('#statisticsPicker a:first').trigger('click');
+        });
+        </script>
+        <ul class="nav nav-tabs ng-scope" id="statisticsPicker">
 
             <li role="presentation" ui-sref-active="active" class="active"><a ui-sref="dashboard.statistics({item: 'categories'})" aria-controls="category">Category</a></li>
             <li role="presentation" ui-sref-active="active" class="active"><a ui-sref="dashboard.statistics({item: 'sources'})" aria-controls="sources">Source</a></li>
@@ -85,37 +89,9 @@
 
         </ul>
 
-        <div ui-view></div>
-
-    </div>
-    <div class="col-sm-5 no-padding-right">
-      <h3>records</h3>
-
-      <p style='margin-bottom: 20px;'>Almanac of ticket statistics</p>
-
-      <table class="table table-condensed table-hover" style="border-top: 2px solid #DDD;" >
-        <tr>
-          <th>Biggest Category</th>
-          <td>{{ dashboard.records.categoryMax }}</td>
-        </tr>
-        <tr>
-          <th>Smallest Category</th>
-          <td>{{ dashboard.records.categoryMin }}</td>
-        </tr>
-        <tr>
-          <th>Open</th>
-          <td>{{ dashboard.records.open }}</td>
-        </tr>
-        <tr>
-          <th>Closed</th>
-          <td>{{ dashboard.records.closed }}</td>
-        </tr>
-        <tr>
-          <th>Total</th>
-          <td>{{ dashboard.records.total }}</td>
-        </tr>
-      </table>
-
     </div>
 
+</div>
+<div class="row">
+    <div ui-view></div>
 </div>

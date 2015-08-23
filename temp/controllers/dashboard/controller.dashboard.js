@@ -10,10 +10,7 @@ angular.module('app').controller('dashboardController',['$scope', 'ticketService
     vm.title = "dashboard";
 
     /* instatiate model */
-    vm.tickets = {
-      open: {},
-      closed: {}
-    };
+    vm.tickets = {};
 
     ticketService.open().then(function(d){
       /**
@@ -29,11 +26,5 @@ angular.module('app').controller('dashboardController',['$scope', 'ticketService
       vm.tickets.closed = d.data;
 
     });
-
-
-
-
-
-
 
 }]);
