@@ -1,0 +1,64 @@
+<form ng-submit="settings.user.save()" name="createuserForm" novalidate="" autocomplete="off" ng-show="settings.user.add">
+
+<div ng-show="user.error" class="alert alert-danger btn-block">{{ signin.error }}</div>
+
+  <div class="control-group">
+    <!-- First name -->
+    <label class="control-label" for="email">First name</label>
+    <div class="controls">
+      <input type="text" ng-model="settings.user.formdata.firstname" class="form-control" id="firstname" name="firstname" placeholder="first name" required>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <!-- First name -->
+    <label class="control-label" for="email">Last name</label>
+    <div class="controls">
+      <input type="text" ng-model="settings.user.formdata.lastname" class="form-control" id="firstname" name="lastname" placeholder="last name" required>
+    </div>
+  </div>
+
+  <div class="control-group hide">
+    <!-- Username -->
+    <label class="control-label" for="email">Username</label>
+    <div class="controls">
+      <input type="text" class="form-control" id="username" name="username" disabled ng-model="settings.user.formdata.username">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <!-- E-mail -->
+    <label class="control-label" for="email">E-mail</label>
+    <div class="controls">
+      <input type="text" class="form-control" id="email" name="email" placeholder="email"  ng-model="settings.user.formdata.email" >
+    </div>
+  </div>
+
+  <div class="control-group">
+    <!-- Password-->
+    <label class="control-label" for="password">Password</label>
+    <div class="controls">
+      <input type="password" id="password" name="password" placeholder="password" class="form-control"  ng-model="settings.user.formdata.password" required>
+    </div>
+    <label class="control-label" for="password">Confirm Password</label>
+    <div class="controls">
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="confirm password" class="form-control"  ng-model="settings.user.formdata.confirmPassword" same-as="settings.user.formdata.password" required>
+      <p class="control-label text-danger" ng-show="createuserForm.confirmPassword.$dirty && createuserForm.confirmPassword.$invalid">please ensure passwords match</p>
+    </div>
+  </div>
+  <br />
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-success btn-block" ng-disabled="createuserForm.$invalid">
+        <span ng-if="settings.users.create.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!settings.users.create.processing">Create</span>
+      </button>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;" class="alert alert-{{ alert.type }} animate main-alert" ng-class="{ 'fadeIn': alert.show, 'fadeOut': !alert.hide, 'alert-hidden':!alert.hasBeenShown }">
+      <strong>{{ alert.title }}</strong>
+      {{ alert.message }}
+  </div>
+
+</form>

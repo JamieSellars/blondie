@@ -1,0 +1,93 @@
+<h3>status types</h3>
+<p>Assign different status types for your enquiries</p>
+
+<br /><button class="btn btn-xs btn-primary" ng-click="settings.statuses.add = !settings.statuses.add">add new status</button><br /><br />
+<table class="table table-hover table-condensed animated fadeInUp" ng-show="!settings.statuses.add">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Preview</th>
+    </tr>
+    <tr ng-repeat="status in settings.statuses.all">
+        <td><a ui-sref="settings.status({id: status.id})">{{ status.name }}</a></td>
+        <td>{{ status.description }}</td>
+        <td>
+          <label class="label label-{{ status.type }}">{{ status.name }}</label>
+        </td>
+    </tr>
+</table>
+<!--
+
+  ADD statuses FORM
+
+-->
+
+
+<form ng-submit="settings.statuses.create()" name="createstatus" novalidate="" autocomplete="off" ng-show="settings.statuses.add" class="animated fadeInUp">
+
+
+  <div class="control-group">
+    <!-- Name -->
+    <label class="control-label" for="name">Name</label>
+    <div class="controls">
+      <input type="text" ng-model="settings.statuses.formdata.name" class="form-control" id="name" name="name" placeholder="status Name" required>
+    </div>
+  </div>
+
+  <!-- Description -->
+
+    <div class="control-group">
+      <label class="control-label" for="description">Description</label>
+      <div class="controls">
+        <input type="text" class="form-control" id="description" name="description" placeholder="Description" ng-model="settings.statuses.formdata.description" required>
+      </div>
+    </div>
+
+
+  <div class="control-group">
+    <!-- Assign Colour -->
+    <label class="control-label" for="name">Colour</label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="success" value="success" checked ng-model="settings.statuses.formdata.type">
+      <span class="label label-success"> green </span>
+    </label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="info" value="info" ng-model="settings.statuses.formdata.type">
+      <span class="label label-info"> light blue </span>
+    </label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="primary" value="primary" ng-model="settings.statuses.formdata.type">
+      <span class="label label-primary"> blue </span>
+    </label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="warning" value="warning" ng-model="settings.statuses.formdata.type">
+      <span class="label label-warning"> orange </span>
+    </label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="danger" value="danger" ng-model="settings.statuses.formdata.type">
+      <span class="label label-danger"> red </span>
+    </label>
+  </div>
+
+  <br /><br />
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-success btn-block" ng-disabled="createuserForm.$invalid">
+        <span ng-if="settings.users.create.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!settings.users.create.processing">Create</span>
+      </button>
+    </div>
+  </div>
+
+
+</form>

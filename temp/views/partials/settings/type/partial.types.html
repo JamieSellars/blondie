@@ -1,0 +1,96 @@
+<br /><button class="btn btn-xs btn-primary" ng-click="settings.types.add = !settings.types.add">add new type</button><br /><br />
+<table class="table table-hover table-condensed animated fadeInUp" ng-show="!settings.types.add">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Preview</th>
+    </tr>
+    <tr ng-repeat="type in settings.types.all">
+        <td><a ui-sref="settings.type({id: type.id})">{{ type.name }}</a></td>
+        <td>{{ type.description }}</td>
+        <td>
+          <label class="label label-{{ type.type }}">{{ type.name }}</label>
+        </td>
+    </tr>
+</table>
+
+<!--
+
+  ADD SOURCES FORM
+
+-->
+
+
+<form ng-submit="settings.types.create()" name="createSource" novalidate="" autocomplete="off" ng-show="settings.types.add" class="animated fadeInUp">
+
+<div ng-show="user.error" class="alert alert-danger btn-block animated flipUpX">{{ signin.error }}</div>
+
+  <div class="control-group">
+    <!-- Name -->
+    <label class="control-label" for="name">Name</label>
+    <div class="controls">
+      <input type="text" ng-model="settings.types.formdata.name" class="form-control" id="name" name="name" placeholder="Source Name" required>
+    </div>
+  </div>
+
+  <!-- Description -->
+
+    <div class="control-group">
+      <label class="control-label" for="description">Description</label>
+      <div class="controls">
+        <input type="text" class="form-control" id="description" name="description" placeholder="Description" ng-model="settings.types.formdata.description" required>
+      </div>
+    </div>
+
+
+  <div class="control-group">
+    <!-- Assign Colour -->
+    <label class="control-label" for="name">Colour</label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="success" value="success" checked ng-model="settings.types.formdata.type">
+      <span class="label label-success"> green </span>
+    </label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="info" value="info" ng-model="settings.types.formdata.type">
+      <span class="label label-info"> light blue </span>
+    </label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="primary" value="primary" ng-model="settings.types.formdata.type">
+      <span class="label label-primary"> blue </span>
+    </label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="warning" value="warning" ng-model="settings.types.formdata.type">
+      <span class="label label-warning"> orange </span>
+    </label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="danger" value="danger" ng-model="settings.types.formdata.type">
+      <span class="label label-danger"> red </span>
+    </label>
+  </div>
+
+  <br /><br />
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-success btn-block" ng-disabled="createuserForm.$invalid">
+        <span ng-if="settings.users.create.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!settings.users.create.processing">Create</span>
+      </button>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;" class="alert alert-{{ alert.type }} animate main-alert" ng-class="{ 'fadeIn': alert.show, 'fadeOut': !alert.hide, 'alert-hidden':!alert.hasBeenShown }">
+      <strong>{{ alert.title }}</strong>
+      {{ alert.message }}
+  </div>
+
+</form>

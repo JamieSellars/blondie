@@ -1,0 +1,47 @@
+<form ng-submit="subCategory.update()" name="updatesubCategory" novalidate="" autocomplete="off" class="animated fadeInUp">
+  <h3>Change Details</h3>
+  <div class="control-group">
+    <!-- Name -->
+    <label class="control-label" for="name">Name</label>
+    <div class="controls">
+      <input type="text" ng-model="subCategory.formdata.name" class="form-control" id="name" name="name" placeholder="Sub Category Name" required>
+    </div>
+  </div>
+
+  <!-- Description -->
+
+  <div class="control-group">
+    <label class="control-label" for="description">Description</label>
+    <div class="controls">
+      <input type="text" class="form-control" id="description" name="description" placeholder="Description" ng-model="subCategory.formdata.description" required>
+    </div>
+  </div>
+
+
+  <br /><br />
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-success btn-block" ng-disabled="updatesubCategory.$invalid">
+        <span ng-if="category.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!category.processing">Update</span>
+      </button>
+    </div>
+  </div>
+
+
+</form>
+
+
+
+<div  class="animated fadeInUp">
+  <h3 class="text-danger">Dangerzone</h3>
+  <p>Remove this Category Type</p>
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-danger btn-block" ng-click="subCategory.destroy()">
+        <span ng-if="category.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!category.processing">Destory</span>
+      </button>
+    </div>
+  </div>
+</div>

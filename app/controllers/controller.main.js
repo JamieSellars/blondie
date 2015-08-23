@@ -29,7 +29,7 @@ angular.module('app').controller('mainController', ['$scope', 'Auth', '$rootScop
       vm.signin.processing = true;
       Auth.login(vm.signin.username, vm.signin.password).then(function(res) {
         vm.signin.processing = false;
-        $window.location.reload(true);
+        $state.go("dashboard", {}, { reload: true });
       }, function(err){
         // Change States
         vm.signin.processing = false;

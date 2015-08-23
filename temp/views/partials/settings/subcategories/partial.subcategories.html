@@ -1,0 +1,51 @@
+<h3>{{ settings.categoryDetails.name }} <small>sub categories</small></h3>
+
+<br /><button class="btn btn-xs btn-primary" ng-click="settings.subCategories.add = !settings.subCategories.add">add new sub category</button><br /><br />
+<table class="table table-hover table-condensed animated fadeInUp" ng-show="!settings.subCategories.add">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr ng-repeat="subCategory in settings.subCategories.all">
+        <td><a ui-sref="settings.subcategory({id: subCategory.id})">{{ subCategory.name }}</a></td>
+        <td>{{ subCategory.description }}</td>
+    </tr>
+</table>
+<!--
+
+  ADD CATEGORIES FORM
+
+-->
+
+
+<form ng-submit="settings.subCategories.create()" name="createSubCategories" novalidate="" autocomplete="off" ng-show="settings.subCategories.add" class="animated fadeInUp">
+
+  <div class="control-group">
+    <!-- Name -->
+    <label class="control-label" for="name">Name</label>
+    <div class="controls">
+      <input type="text" ng-model="settings.subCategories.formdata.name" class="form-control" id="name" name="name" placeholder="Sub Category Name" required>
+    </div>
+  </div>
+
+  <!-- Description -->
+
+    <div class="control-group">
+      <label class="control-label" for="description">Description</label>
+      <div class="controls">
+        <input type="text" class="form-control" id="description" name="description" placeholder="Description" ng-model="settings.subCategories.formdata.description" required>
+      </div>
+    </div>
+
+
+  <br /><br />
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-success btn-block" ng-disabled="createSubCategories.$invalid">
+        <span ng-if="settings.subCategories.create.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!settings.subCategories.create.processing">Create</span>
+      </button>
+    </div>
+  </div>
+
+</form>

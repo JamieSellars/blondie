@@ -1,0 +1,121 @@
+<style>
+  .no-padding-left {
+    padding-left: 0px;
+  }
+  .no-padding-right: {
+    padding-right: 0px;
+  }
+</style>
+
+<div class="row">
+
+  <h3>open <small>recently updated</small>
+    <a ui-sref="tickets.all" class="btn btn-link btn-xs pull-right">View All</a>
+    <a ui-sref="tickets.create" class="btn btn-link btn-xs pull-right">Create New Ticket</a>
+  </h3>
+
+  <table class="table table-hover table-condensed">
+    <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Sub Category</th>
+        <th>Source</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Assigned To</th>
+        <th>Last Updated</th>
+    </tr>
+    <tr ng-repeat="open in dashboard.tickets.open">
+        <td><a ui-sref="tickets.view({id: open.id})">{{open.title | limitTo: 20}}</a></td>
+        <td>{{open.category.name}}</td>
+        <td>{{open.subcategory.name}}</td>
+        <td><span class='label label-{{open.source.type }}'>{{open.source.name}}</span></td>
+        <td><span class='label label-{{open.type.type }}'>{{open.type.name}}</span></td>
+        <td><span class='label label-{{open.status.type }}'>{{open.status.name}}</span></td>
+        <td>{{open.assigned.firstname + ' ' + open.assigned.lastname}}</td>
+        <td>{{open.createdAt | date: 'fullDate'}}</td>
+    </tr>
+  </table>
+
+</div>
+
+<div class="row">
+
+  <h3>closed
+    <small>recently closed</small>
+    <a ui-sref="tickets.all" class="btn btn-link btn-xs pull-right">View All</a>
+  </h3>
+
+  <table class="table table-hover table-condensed">
+    <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Sub Category</th>
+        <th>Source</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Assigned To</th>
+        <th>Last Updated</th>
+    </tr>
+    <tr ng-repeat="closed in dashboard.tickets.closed">
+        <td><a ui-sref="tickets.view({id: closed.id})">{{closed.title | limitTo: 20}}</a></td>
+        <td>{{closed.category.name}}</td>
+        <td>{{closed.subcategory.name}}</td>
+        <td><span class='label label-{{closed.source.type }}'>{{closed.source.name}}</span></td>
+        <td><span class='label label-{{closed.type.type }}'>{{closed.type.name}}</span></td>
+        <td><span class='label label-{{closed.status.type }}'>{{closed.status.name}}</span></td>
+        <td>{{closed.assigned.firstname + ' ' + closed.assigned.lastname}}</td>
+        <td>{{closed.updatedAt | date: 'shortDate'}} {{closed.updatedAt | date: 'shortTime'}}</td>
+    </tr>
+  </table>
+
+</div>
+
+<div class="row">
+
+    <div class="col-sm-7 no-padding-left">
+
+        <h3>ticket statistics</h3>
+
+        <ul class="nav nav-tabs ng-scope">
+
+            <li role="presentation" ui-sref-active="active" class="active"><a ui-sref="dashboard.statistics({item: 'categories'})" aria-controls="category">Category</a></li>
+            <li role="presentation" ui-sref-active="active" class="active"><a ui-sref="dashboard.statistics({item: 'sources'})" aria-controls="sources">Source</a></li>
+            <li role="presentation" ui-sref-active="active" class="active"><a ui-sref="dashboard.statistics({item: 'types'})" aria-controls="types">Type</a></li>
+
+        </ul>
+
+        <div ui-view></div>
+
+    </div>
+    <div class="col-sm-5 no-padding-right">
+      <h3>records</h3>
+
+      <p style='margin-bottom: 20px;'>Almanac of ticket statistics</p>
+
+      <table class="table table-condensed table-hover" style="border-top: 2px solid #DDD;" >
+        <tr>
+          <th>Biggest Category</th>
+          <td>{{ dashboard.records.categoryMax }}</td>
+        </tr>
+        <tr>
+          <th>Smallest Category</th>
+          <td>{{ dashboard.records.categoryMin }}</td>
+        </tr>
+        <tr>
+          <th>Open</th>
+          <td>{{ dashboard.records.open }}</td>
+        </tr>
+        <tr>
+          <th>Closed</th>
+          <td>{{ dashboard.records.closed }}</td>
+        </tr>
+        <tr>
+          <th>Total</th>
+          <td>{{ dashboard.records.total }}</td>
+        </tr>
+      </table>
+
+    </div>
+
+</div>

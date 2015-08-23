@@ -1,0 +1,113 @@
+<form ng-submit="user.update()" name="createuserForm" novalidate="" autocomplete="off" class="animated fadeInUp">
+
+  <h3>Change Details</h3>
+
+  <div class="control-group">
+    <!-- First name -->
+    <label class="control-label" for="email">First name</label>
+    <div class="controls">
+      <input type="text" ng-model="user.formdata.firstname" class="form-control" id="firstname" name="firstname" placeholder="first name" required>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <!-- First name -->
+    <label class="control-label" for="email">Last name</label>
+    <div class="controls">
+      <input type="text" ng-model="user.formdata.lastname" class="form-control" id="firstname" name="lastname" placeholder="last name" required>
+    </div>
+  </div>
+
+  <div class="control-group hide">
+    <!-- Username -->
+    <label class="control-label" for="email">Username</label>
+    <div class="controls">
+      <input type="text" class="form-control" id="username" name="username" disabled ng-model="user.formdata.username">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <!-- E-mail -->
+    <label class="control-label" for="email">E-mail</label>
+    <div class="controls">
+      <input type="text" class="form-control" id="email" name="email" placeholder="email"  ng-model="user.formdata.email" >
+    </div>
+  </div>
+  <h4><i class="fa fa-lock text-muted"></i>Privileges</h4>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" data-toggle="toggle" data-onstyle="warning" ng-model="user.formdata.isManager"> Allow Access to Settings
+    </label>
+  </div>
+
+   <br />
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-default btn-block" ng-disabled="createuserForm.$invalid">
+        <span ng-if="user.create.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!user.create.processing">Update {{ user.formdata.firstname }}</span>
+      </button>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;" class="alert alert-{{ alert.type }} animate main-alert" ng-class="{ 'fadeIn': alert.show, 'fadeOut': !alert.hide, 'alert-hidden':!alert.hasBeenShown }">
+      <strong>{{ alert.title }}</strong>
+      {{ alert.message }}
+  </div>
+
+</form>
+
+<form ng-submit="user.changePassword()" name="changePassword" novalidate="" autocomplete="off" class="animated fadeInUp">
+  <h3>Change Password</h3>
+  <p>To update a user's password, type it in here. They will be prompted to update their password on next successful login.</p>
+  <div class="control-group">
+    <!-- Password-->
+    <label class="control-label" for="password">Password</label>
+    <div class="controls">
+      <input type="password" id="password" name="password" placeholder="password" class="form-control"  ng-model="user.passwordData.password">
+    </div>
+    <label class="control-label" for="password">Confirm Password</label>
+    <div class="controls">
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="confirm password" class="form-control"  ng-model="user.passwordData.confirmPassword" same-as="user.passwordData.password">
+      <p class="control-label text-danger" ng-show="changePassword.confirmPassword.$dirty && changePassword.confirmPassword.$invalid">please ensure passwords match</p>
+    </div>
+  </div>
+  <br />
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-default btn-block" ng-disabled="changePassword.$invalid">
+        <span ng-if="user.password.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!user.password.processing">Update Password</span>
+      </button>
+    </div>
+  </div>
+</form>
+<br />
+<br />
+
+<div ng-if="!user.formdata.isAdmin" class="animated fadeInUp">
+<h3 class="text-danger">Dangerzone</h3>
+<p>The following action will delete <strong>{{ user.username }}</strong> and cannot be reversed</p>
+<p>To destory this account, type in the {{ user.username }} and hit the <span class="label label-danger"> destory </span>&nbsp;button!
+
+<form ng-submit="user.destory()" name="userdestory">
+  <div class="control-group">
+    <!-- Destory Account Name-->
+    <label class="control-label" for="password">Destory User</label>
+    <div class="controls">
+      <input type="text" id="destory" name="destory" class="form-control" ng-model="user.destorydata.username" required>
+    </div>
+  </div>
+  <br />
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-danger btn-block" ng-disabled="userdestory.$invalid">
+        <span ng-if="user.destory.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!user.destory.processing">Destory</span>
+      </button>
+    </div>
+  </div>
+
+
+    </form>
+  </div>

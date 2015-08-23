@@ -1,0 +1,51 @@
+<h3>category types</h3>
+<p>Manage your call center categories</p>
+<br /><button class="btn btn-xs btn-primary" ng-click="settings.categories.add = !settings.categories.add">add new category</button><br /><br />
+<table class="table table-hover table-condensed animated fadeInUp" ng-show="!settings.categories.add">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr ng-repeat="category in settings.categories.all">
+        <td><a ui-sref="settings.category({id: category.id})">{{ category.name }}</a></td>
+        <td>{{ category.description }}</td>
+    </tr>
+</table>
+<!--
+
+  ADD CATEGORIES FORM
+
+-->
+
+
+<form ng-submit="settings.categories.create()" name="createCategory" novalidate="" autocomplete="off" ng-show="settings.categories.add" class="animated fadeInUp">
+
+  <div class="control-group">
+    <!-- Name -->
+    <label class="control-label" for="name">Name</label>
+    <div class="controls">
+      <input type="text" ng-model="settings.categories.formdata.name" class="form-control" id="name" name="name" placeholder="Category Name" required>
+    </div>
+  </div>
+
+  <!-- Description -->
+
+    <div class="control-group">
+      <label class="control-label" for="description">Description</label>
+      <div class="controls">
+        <input type="text" class="form-control" id="description" name="description" placeholder="Description" ng-model="settings.categories.formdata.description" required>
+      </div>
+    </div>
+
+
+  <br /><br />
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-success btn-block" ng-disabled="createCategory.$invalid">
+        <span ng-if="settings.users.create.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!settings.users.create.processing">Create</span>
+      </button>
+    </div>
+  </div>
+
+</form>

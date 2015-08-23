@@ -1,0 +1,83 @@
+<form ng-submit="source.update()" name="updateSource" novalidate="" autocomplete="off" class="animated fadeInRight">
+  <h3>Change Details</h3>
+  <div class="control-group">
+    <!-- Name -->
+    <label class="control-label" for="name">Name</label>
+    <div class="controls">
+      <input type="text" ng-model="source.formdata.name" class="form-control" id="name" name="name" placeholder="Source Name" required>
+    </div>
+  </div>
+
+  <!-- Description -->
+
+    <div class="control-group">
+      <label class="control-label" for="description">Description</label>
+      <div class="controls">
+        <input type="text" class="form-control" id="description" name="description" placeholder="Description" ng-model="source.formdata.description" required>
+      </div>
+    </div>
+
+
+  <div class="control-group">
+    <!-- Assign Colour -->
+    <label class="control-label" for="name">Colour</label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="success" value="success" checked ng-model="source.formdata.type">
+      <span class="label label-success"> green </span>
+    </label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="info" value="info" ng-model="source.formdata.type">
+      <span class="label label-info"> light blue </span>
+    </label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="primary" value="primary" ng-model="source.formdata.type">
+      <span class="label label-primary"> blue </span>
+    </label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="warning" value="warning" ng-model="source.formdata.type">
+      <span class="label label-warning"> orange </span>
+    </label>
+  </div>
+  <div class="radio-inline">
+    <label>
+      <input type="radio" name="type" id="danger" value="danger" ng-model="source.formdata.type">
+      <span class="label label-danger"> red </span>
+    </label>
+  </div>
+
+  <br /><br />
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-success btn-block" ng-disabled="updateSource.$invalid">
+        <span ng-if="source.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!source.processing">Update</span>
+      </button>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px;" class="alert alert-{{ alert.type }} animate main-alert" ng-class="{ 'fadeIn': alert.show, 'fadeOut': !alert.hide, 'alert-hidden':!alert.hasBeenShown }">
+      <strong>{{ alert.title }}</strong>
+      {{ alert.message }}
+  </div>
+
+</form>
+<div  class="animated fadeInRight">
+  <h3 class="text-danger">Dangerzone</h3>
+  <p>Remove this Source Type</p>
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-danger btn-block" ng-click="source.destroy()">
+        <span ng-if="source.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!source.processing">Destory</span>
+      </button>
+    </div>
+  </div>
+</div>
