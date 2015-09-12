@@ -22,6 +22,7 @@
     <div class="container site-body ui-view-container" ng-if="main.loggedIn">
 
       <a class="btn btn-success btn-md" ui-sref='tickets.quick'><i class="fa fa-rocket"></i> Quick Ticket </a>
+      <a class="btn btn-success btn-md" ui-sref='tickets.create'><i class="fa fa-ticket"></i> Create Full Ticket </a>
 
       <!-- UI STATE DIRECTIVE -->
       <div ui-view>
@@ -48,10 +49,10 @@
   <!-- inject:js -->
   <script src="app.js"></script>
   <script src="config/app.config.js"></script>
-  <script src="directives/directive.sameas.js"></script>
   <script src="controllers/controller.dashboard.js"></script>
   <script src="controllers/controller.main.js"></script>
   <script src="controllers/controller.me.js"></script>
+  <script src="directives/directive.sameas.js"></script>
   <script src="services/service.auth.js"></script>
   <script src="services/services.alert.js"></script>
   <script src="controllers/dashboard/controller.statistics.js"></script>
