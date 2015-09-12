@@ -57,15 +57,15 @@ angular.module('app').controller('ticketsCreateController', ['$scope', 'Auth', '
     });
 
     vm.getSubCategories = function(){
-
-      vm.properties.subcategories = vm.formdata.category.subcategories;
+        console.log(vm.formdata);
+        vm.properties.subcategories = vm.formdata.category.subcategories;
     }
 
     vm.save = function(){
 
       vm.processing = true;
       /**
-      * if editting an existing item
+      * if editing an existing item
       **/
       if($stateParams.id){
         // replace object of category with id
@@ -99,3 +99,41 @@ angular.module('app').controller('ticketsCreateController', ['$scope', 'Auth', '
 
 
 }]);
+
+angular.module('app').controller('ticketsQuickController', ['$scope', 'Auth', '$rootScope','$state', '$window','ticketPropertiesService','ticketService','$stateParams', function($scope, Auth, $rootScope, $state, $window,ticketPropertiesService,ticketService,$stateParams){
+
+    vm = this;
+    vm.title = "Quick Entry";
+    vm.formdata = {};
+
+    ticketPropertiesService.get().then(function(d){
+
+      vm.properties = d.data;
+
+    });
+
+    vm.getSubCategories = function(category){
+      vm.properties.subcategories = category.subcategories;
+    }
+
+
+    vm.save = function(){
+
+      vm.processing = true;
+
+      // hard code descriptions
+      vm.formdata.title = "Enquiry";
+      vm.formdata.description = " ";
+      vm.formdata.status = "55d7ea90b5b8c0c027509603"; // id for closed this will need to be changed if you create a new database
+      vm.formdata.assigned = $rootScope.user.id;
+
+      ticketService.save(vm.formdata).then(function(d){
+          // Change State :: TODO
+          $state.go('dashboard', {}, { reload: true });
+      });
+
+
+    };
+
+
+  }]);

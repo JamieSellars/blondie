@@ -31,7 +31,6 @@ angular.module('app')
 
     // Programmed states
     $stateProvider
-
       .state('dashboard', {
           url: "/dashboard",
           templateUrl: "views/view.dashboard.html",
@@ -71,6 +70,12 @@ angular.module('app')
           parent: "tickets",
           templateUrl: "views/tickets/tickets.create.html",
           controller: "ticketsCreateController as ticket"
+      })
+      .state('tickets.quick', {
+          url: "/quick",
+          parent: "tickets",
+          templateUrl: "views/tickets/tickets.quick.html",
+          controller: "ticketsQuickController as quick"
       })
 
       .state('tickets.view', {

@@ -1,0 +1,119 @@
+<div class="animated fadeInUp">
+
+  <h4>{{ quick.title }}</h4>
+
+  <form name="quickForm" ng-submit="quick.save()" novalidate>
+
+    <div class="row">
+      <div class="control-group col-sm-6">
+        <!-- category -->
+        <label class="control-label" for="name">Category</label>
+        <div class="controls">
+
+          <style>
+          .radio-toolbar {
+            display: inline-block;
+          }
+          .radio-toolbar input[type="radio"] {
+              display:none;
+          }
+
+          .radio-toolbar label {
+            padding: 8px 32px;
+            margin-right: 3px;
+            margin-bottom: 3px;
+            border-width: 2px;
+          }
+
+          .radio-toolbar input[type="radio"]:checked + label {
+             border-color: orange;
+             border-width: 2px;
+          }
+          .control-group {
+            margin-bottom: 20px;
+          }
+
+          </style>
+          <div class="radio-toolbar" ng-repeat="category in quick.properties.categories" ng-click="quick.getSubCategories(category)">
+              <input type="radio" id="cat-{{ category.id}}" value="{{ category.id }}" ng-model="quick.formdata.category" />
+              <label class='btn btn-primary' for="cat-{{ category.id}}" name="categories">{{ category.name}}</label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="control-group col-sm-6">
+        <!-- subcategory -->
+        <label class="control-label" for="name">Sub Category</label>
+        <div class="controls">
+          <div class="radio-toolbar" ng-repeat="subcategory in quick.properties.subcategories">
+              <input type="radio" id="cat-{{ subcategory.id}}" value="{{ subcategory.id }}" ng-model="quick.formdata.subcategory" />
+              <label class='btn btn-primary' for="cat-{{ subcategory.id}}" name="categories">{{ subcategory.name}}</label>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="control-group">
+        {{ main.user.id }}
+        <input type='hidden' value="{{ main.user.id }}" ng-model="quick.formdata.assigned"  ng-init="quick.formdata.assigned='{{main.user.id}}'"/>
+    </div>
+
+    <div class="row">
+      <div class="control-group col-sm-12">
+        <label class="control-label" for="name">Type of Enquiry</label>
+        <div class="controls">
+          <div class="radio-toolbar" ng-repeat="type in quick.properties.types">
+              <input type="radio" id="cat-{{ type.id}}" value="{{ type.id }}" ng-model="quick.formdata.type" />
+              <label class='btn btn-{{ type.type }}' for="cat-{{ type.id}}" name="types">{{ type.name}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="control-group col-sm-12">
+        <label class="control-label" for="name">Source</label>
+        <div class="controls">
+          <div class="radio-toolbar" ng-repeat="source in quick.properties.sources">
+              <input type="radio" id="cat-{{ source.id}}" value="{{ source.id }}" ng-model="quick.formdata.source" />
+              <label class='btn btn-{{ source.type }}' for="cat-{{ source.id}}" name="sources">{{ source.name}}</label>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="control-group col-sm-12">
+        <label class="control-label" for="name">Status</label>
+        <div class="controls">
+          <div class="radio-toolbar" ng-repeat="status in quick.properties.statuses">
+              <input type="radio" id="cat-{{ status.id}}" value="{{ status.id }}" ng-model="quick.formdata.status" />
+              <label class='btn btn-{{ status.type }}' for="cat-{{ status.id}}" name="statuses">{{ status.name}}</label>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <br />
+
+    <div class="control-group">
+      <div class="controls">
+        <button class="btn btn-info btn-block" ng-disabled="quickForm.$invalid">
+          <span ng-if="quick.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+          <span ng-if="!quick.processing">{{ quick.title }} </span>
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+<div ng-if="quick.view">
+  <h3 class="text-danger">Dangerzone</h3>
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-danger btn-block" ng-click="quick.destory()">
+        <span ng-if="quick.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!quick.processing">Destroy quick</span>
+      </button>
+    </div>
+  </div>
+</div>
+</div>

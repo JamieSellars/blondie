@@ -1,0 +1,100 @@
+<div class="animated fadeInUp">
+
+  <h4>{{ ticket.title }}</h4>
+
+  <form name="ticketForm" ng-submit="ticket.save()" novalidate>
+
+    <div class="control-group">
+      <!-- Ticket -->
+      <label class="control-label" for="name">Title</label>
+      <div class="controls">
+        <input type="text" ng-model="ticket.formdata.title" class="form-control" id="title" name="title" placeholder="Ticket Title" required>
+      </div>
+    </div>
+    <div class="control-group">
+      <!-- description -->
+      <label class="control-label" for="name">Description</label>
+      <div class="controls">
+        <textarea type="text" ng-model="ticket.formdata.description" class="form-control" id="title" name="title" placeholder="Ticket Description" required></textarea>
+      </div>
+    </div>
+    <div class="control-group">
+      <!-- Assigned -->
+      <label class="control-label" for="name">Assigned to</label>
+      <div class="controls">
+        <select class="form-control" ng-model="ticket.formdata.assigned" ng-options="user.id as (user.firstname + ' ' + user.lastname) for user in ticket.properties.users" required></select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="control-group col-sm-6">
+        <!-- category -->
+        <label class="control-label" for="name">Category</label>
+        <div class="controls">
+          <select class="form-control" ng-model="ticket.formdata.category" ng-options="category.name for category in ticket.properties.categories" ng-change="ticket.getSubCategories()" required></select>
+        </div>
+      </div>
+
+      <div class="control-group col-sm-6">
+        <!-- category -->
+        <label class="control-label" for="name">Sub Category</label>
+        <div class="controls">
+          <select class="form-control" ng-model="ticket.formdata.subcategory" ng-options="subcategory.id as subcategory.name for subcategory in ticket.properties.subcategories" required></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="control-group col-sm-4">
+        <!-- category -->
+        <label class="control-label" for="name">Type</label>
+        <div class="controls">
+
+          <select class="form-control" ng-model="ticket.formdata.type" ng-options="type.id as type.name for type in ticket.properties.types" required></select>
+
+        </div>
+      </div>
+      <div class="control-group col-sm-4">
+        <!-- category -->
+        <label class="control-label" for="name">Source</label>
+        <div class="controls">
+
+          <select class="form-control" ng-model="ticket.formdata.source" ng-options="source.id as source.name for source in ticket.properties.sources" required></select>
+
+        </div>
+      </div>
+      <div class="control-group col-sm-4">
+        <!-- category -->
+        <label class="control-label" for="name">Status</label>
+        <div class="controls">
+
+          <select class="form-control" ng-model="ticket.formdata.status" ng-options="status.id as status.name for status in ticket.properties.statuses" required></select>
+
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="control-group" ng-if="ticket.update">
+      <div class="controls">
+        <button class="btn btn-info btn-block" ng-disabled="ticketForm.$invalid">
+          <span ng-if="ticket.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+          <span ng-if="!ticket.processing">{{ ticket.title }} </span>
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+<div ng-if="ticket.view">
+  <h3 class="text-danger">Dangerzone</h3>
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-danger btn-block" ng-click="ticket.destory()">
+        <span ng-if="ticket.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!ticket.processing">Destroy Ticket</span>
+      </button>
+    </div>
+  </div>
+</div>
+</div>

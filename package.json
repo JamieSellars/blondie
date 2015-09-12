@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "del": "^1.2.1",
+    "forever": "^0.15.1",
     "gulp-webserver": "^0.9.1"
   }
 }

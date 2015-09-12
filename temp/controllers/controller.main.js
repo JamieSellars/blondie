@@ -16,6 +16,7 @@ angular.module('app').controller('mainController', ['$scope', 'Auth', '$rootScop
     if(vm.loggedIn) {
       Auth.getUser().then(function(res){
         vm.user = res.data;
+        $rootScope.user = res.data;
       });
     }
 
@@ -29,6 +30,10 @@ angular.module('app').controller('mainController', ['$scope', 'Auth', '$rootScop
       vm.signin.processing = true;
       Auth.login(vm.signin.username, vm.signin.password).then(function(res) {
         vm.signin.processing = false;
+
+        vm.user = res.data.user;
+        $rootScope.user = res.data;
+
         $state.go("dashboard", {}, { reload: true });
       }, function(err){
         // Change States
