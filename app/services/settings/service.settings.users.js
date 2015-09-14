@@ -33,7 +33,7 @@ angular.module('app').factory('settingsUserService', ['$http', '$q', function($h
     };
 
     userService.changePassword = function(formdata){
-        return $http.put('/api/users/changepassword/' + formdata.id, formdata).success(function(data){
+        return $http.put('/api/changepassword/' + formdata.id, formdata).success(function(data){
           return data;
         });
     };

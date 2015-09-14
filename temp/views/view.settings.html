@@ -5,7 +5,7 @@
     <li role="presentation" ui-sref-active="active"><a ui-sref="settings.types" aria-controls="type" role="tab">types</a></li>
     <li role="presentation" ui-sref-active="active"><a ui-sref="settings.statuses" aria-controls="status" role="tab">statuses</a></li>
     <li role="presentation" ui-sref-active="active"><a ui-sref="settings.sources" aria-controls="status" role="tab">sources</a></li>
-    <li role="presentation" ui-sref-active="active"><a ui-sref="settings.users"   aria-controls="users" role="tab">users</a></li>
+    <li role="presentation" ui-sref-active="active" class="pull-right"><a ui-sref="settings.users"   aria-controls="users" role="tab" class="text-danger">users</a></li>
 </ul>
 
 <div style="margin-top: 20px;" class="alert alert-{{ alert.type }} animate main-alert" ng-class="{ 'fadeIn': alert.show, 'fadeOut': !alert.hide, 'alert-hidden':!alert.hasBeenShown }">
