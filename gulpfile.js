@@ -9,6 +9,11 @@ var gulp = require('gulp'),
     angularFileSort = require('gulp-angular-filesort'),
     del = require('del');
 
+/**
+*   Import Minification and Concatenation modules
+**/
+
+
   /**
   *   SET PATH VARIABLES
   **/

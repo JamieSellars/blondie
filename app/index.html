@@ -2,6 +2,7 @@
 <html ng-app="app" ng-cloak>
 <head>
   <title>Blondie</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <!-- vendorInject:css -->
   <!-- endinject -->
 
@@ -10,7 +11,7 @@
 </head>
 <body ng-controller="mainController as main">
 
-    <div ng-include src="'/views/partials/partial.mainmenu.html'" ng-if="main.loggedIn"></div>
+    <div ng-include src="'views/partials/partial.mainmenu.html'" ng-if="main.loggedIn"></div>
 
     <div class="container site-body ui-view-container" ng-if="main.loggedIn">
 
@@ -25,7 +26,7 @@
 
     </div><!-- /.container -->
 
-    <div ng-if="!main.loggedIn" ng-include src="'/views/partials/partial.signin.html'"></div>
+    <div ng-if="!main.loggedIn" ng-include src="'views/partials/partial.signin.html'"></div>
 
   <!-- vendorInject:js -->
   <!-- endinject -->
