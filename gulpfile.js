@@ -57,6 +57,7 @@ gulp.task('serve', ['copyAll'], function(){
 			.pipe(webserver({
 				livereload: true,
         host: '0.0.0.0',
+        port: '8010',
 				proxies: [{
 						source: '/api',
 						target: 'http://localhost:1337/api'

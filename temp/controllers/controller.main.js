@@ -4,6 +4,8 @@
 *   @description: main functions shared on the view - such as is logged in
 *   @author:      jamie sellars (@goingsideways on github)
 **/
+(function(){
+    'use-stict';
 angular.module('app').controller('mainController', ['$scope', 'Auth', '$rootScope','$state', '$window', function($scope, Auth, $rootScope, $state, $window){
 
     vm = this;
@@ -49,3 +51,4 @@ angular.module('app').controller('mainController', ['$scope', 'Auth', '$rootScop
     // END AUTH
 
 }]);
+})();

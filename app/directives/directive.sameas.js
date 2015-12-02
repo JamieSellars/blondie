@@ -1,4 +1,5 @@
-'use-strict';
+(function(){
+    'use-stict';
 angular.module('app').directive('sameAs', function(){
 
     return {
@@ -21,3 +22,4 @@ angular.module('app').directive('sameAs', function(){
     };
 
 });
+})();

@@ -4,6 +4,8 @@
 *   @description: settomgs functions shared on the view - user settings / category
 *   @author:      jamie sellars (@goingsideways on github)
 **/
+(function(){
+    'use-stict';
 angular.module('app').controller('meController', ['$scope','settingsUserService','alertService', function($scope,settingsUserService,alertService){
 
     vm = this;
@@ -24,3 +26,4 @@ angular.module('app').controller('meController', ['$scope','settingsUserService'
     };
 
 }]);
+})();

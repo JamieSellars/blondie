@@ -6,12 +6,12 @@ var plan = require('flightplan');
  */
 plan.target('production', {
   host: 'PBNODE',
-  username: 'web',
-  password: 'Webdepoy',
+  username: 'webdeploy',
+  password: 'Webdeploy',
   agent: process.env.SSH_AUTH_SOCK,
 
   webRoot: '/var/www/blondie/frontend',
-  ownerUser: 'web',
+  ownerUser: 'webdeploy',
   repository: 'https://github.com/goingsideways/blondie.git',
   branchName: 'master',
   maxDeploys: 10
