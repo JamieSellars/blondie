@@ -12,7 +12,7 @@
     
         statusService.save = function(formdata){
             return $http.post('/api/statuses', formdata).success(function(data){
-            return data;
+                return data;
             });
         };
     

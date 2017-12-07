@@ -7,6 +7,7 @@
 **/
 (function(){
     'use-stict';
+    
     angular.module('app').controller('statisticsController',['$scope', '$stateParams','statisticsService', function($scope, $stateParams, statisticsService){
     
         var view = this;
@@ -14,15 +15,17 @@
         view.statisticQuery = $stateParams.item;
     
         statisticsService.get(view.statisticQuery).then(function(d){
-        view.data = d.data;
+            
+            view.data = d.data;
     
             view.labels = [];
             view.chartdata = [];
     
             for(var key in d.data){
-            view.labels.push(d.data[key].name);
-            view.chartdata.push(d.data[key].total);
+                view.labels.push(d.data[key].name);
+                view.chartdata.push(d.data[key].total);
             }
+            
         });
     
     }]);
