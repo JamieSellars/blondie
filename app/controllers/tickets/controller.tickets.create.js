@@ -35,16 +35,6 @@
             // Bind data to form
             vm.formdata = d.data;
   
-            // // Prevent ui from updating a closed item
-            // angular.forEach(vm.properties.statuses, function(value, idx){
-            //   if(value.name.toLowerCase() === "closed"){
-            //     if(vm.formdata.status == value.id){
-            //         vm.title = "View Ticket (read only)";
-            //         vm.update = false;
-            //     }
-            //   }
-            // });
-  
             var categoryid = vm.formdata.category;
             angular.forEach(vm.properties.categories, function(value, idx){
               if(value.id === categoryid){
@@ -59,7 +49,6 @@
       });
   
       vm.getSubCategories = function(){
-          console.log(vm.formdata);
           vm.properties.subcategories = vm.formdata.category.subcategories;
       }
   

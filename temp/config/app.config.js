@@ -27,7 +27,7 @@ angular.module('app')
     $urlRouterProvider.when('/dashboard', 'dashboard/statistics/categories');
     //$urlRouterProvider.when('/tickets', 'tickets/all');
 
-    $urlRouterProvider.otherwise("/dashboard");
+    $urlRouterProvider.otherwise("/tickets/all");
 
     // Programmed states
     $stateProvider
@@ -182,6 +182,93 @@ angular.module('app')
         templateUrl: "views/partials/settings/types/partial.type.html",
         controller: "typeController as type"
       })
+
+      /**
+       * 
+       *    Lost & Found
+       * 
+       */
+        .state('lostandfound', {
+            url: '/lostandfound',
+            abstract: true,
+            templateUrl: 'views/lostandfound/lostandfound.template.html',            
+        })
+        .state('lostandfound.items', {
+            parent: 'lostandfound',
+            url: '',
+            templateUrl: 'views/lostandfound/items.template.html',                        
+            controller: 'LostandFoundItemsController as items'
+        })
+        .state('lostandfound.item', {
+            parent: 'lostandfound',
+            url: '/item/:id',
+            templateUrl: 'views/lostandfound/item.template.html',                        
+            controller: 'LostandFoundItemController as item'
+        })
+
+
+        .state('lostandfound.settings', {
+            url: "/settings",
+            abstract: true,
+            parent: 'lostandfound',
+            templateUrl: "views/lostandfound/settings.template.html",
+        })
+        .state('lostandfound.settings.categories', {
+            url: "",
+            parent: 'lostandfound.settings',
+            templateUrl: "views/lostandfound/categories.template.html",
+            controller: 'LostandfoundCategoriesController as categories'
+        })
+        .state('lostandfound.settings.category', {
+            url: "/category/:id",
+            parent: 'lostandfound.settings',
+            templateUrl: "views/lostandfound/category.template.html",
+            controller: 'LostandfoundCategoryController as category'
+        })
+
+        .state('lostandfound.settings.subcategories', {
+            url: "/category/:id/subcategories",
+            parent: 'lostandfound.settings',
+            templateUrl: "views/lostandfound/subcategories.template.html",
+            controller: 'LostandfoundSubcategoriesController as subcategories'
+        })
+        .state('lostandfound.settings.subcategory', {
+            url: "/category/:id/subcategory/:subcatId",
+            parent: 'lostandfound.settings',
+            templateUrl: "views/lostandfound/subcategory.template.html",
+            controller: 'LostandfoundSubcategoryController as subcategory'
+        })
+
+
+        .state('lostandfound.settings.locations', {
+            url: "/locations",
+            parent: 'lostandfound.settings',
+            templateUrl: "views/lostandfound/locations.template.html",
+            controller: 'LocationsController as locations'
+        })
+        .state('lostandfound.settings.location', {
+            url: "/location/:id",
+            parent: 'lostandfound.settings',
+            templateUrl: "views/lostandfound/location.template.html",
+            controller: 'LocationController as location'
+        })
+
+
+        .state('lostandfound.settings.statuses', {
+            url: "/statuses",
+            parent: 'lostandfound.settings',
+            templateUrl: "views/lostandfound/statuses.template.html",
+            controller: 'LostandFoundStatusesController as statuses'
+        })
+        .state('lostandfound.settings.status', {
+            url: "/statuses/:id",
+            parent: 'lostandfound.settings',
+            templateUrl: "views/lostandfound/status.template.html",
+            controller: 'LostandfoundStatusController as status'
+        })
+ 
+ 
+
     // authentication
     .state('signin', {
         url: "/signin", // UI will show login window

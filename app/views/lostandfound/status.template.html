@@ -1,0 +1,39 @@
+<h3>Lost & Found status</h3>
+
+<form ng-submit="status.save()" name="createstatus" novalidate="" autocomplete="off" class="animated fadeInUp">
+        
+    <div class="control-group">
+    <!-- Name -->
+    <label class="control-label" for="name">Name</label>
+    <div class="controls">
+        <input type="text" ng-model="status.status.name" class="form-control" id="name" name="name" placeholder="status Name" required>
+    </div>
+    </div>
+
+    <!-- Description -->
+
+    <div class="control-group">
+        <label class="control-label" for="description">Description</label>
+        <div class="controls">
+        <input type="text" class="form-control" id="description" name="description" placeholder="Description" ng-model="status.status.description" required>
+        </div>
+    </div>
+
+
+    <br /><br />
+    <div class="control-group">
+    <div class="controls">
+        <button class="btn btn-success btn-block" ng-disabled="createstatus.$invalid" >
+            <span ng-if="!status.status.id">Create</span>
+            <span ng-if="status.status.id">Save</span>
+        </button>
+        <br />
+        
+    </div>
+        <h3>Dangerzone</h3>
+        <button class="btn btn-danger btn-block" ng-if="status.status.id" ng-click="status.delete()">
+            <span>Delete</span>
+        </button>
+    </div>
+
+</form>

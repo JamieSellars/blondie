@@ -63,7 +63,6 @@
   
       vm.update = function(){
         settingsUserService.update(vm.formdata).then(function(d){
-          console.log(d.data);
           alertService('success', 'Success!', d.data[0].firstname + ' ' +d.data[0].lastname+ ' updated.');
           $state.go('settings.users');
         });
@@ -82,23 +81,23 @@
       };
   
       vm.destroy = function(){
-        if(vm.destorydata.username === vm.username){
-          vm.destory.processing = true;
+        if(vm.destroydata.username === vm.username){
+          vm.destroy.processing = true;
           // call API
-          settingsUserService.destory(vm.formdata.id).then(function(d){
+          settingsUserService.destroy(vm.formdata.id).then(function(d){
             alertService('success', 'Success!', d.data + " redicting...");
             // redirect
             $timeout(function(){
-              $state.go('settings');
+              $state.go('settings.users');
             },2500)
   
           }, function(err){
-            vm.destory.processing = false;
+            vm.destroy.processing = false;
             alertService('danger', 'oops!', 'Could not create user: [' + err.status + '] ' + err.data);
           });
   
         }else{
-          alertService("warning", "User not Destoryed", "Username does not match what you enetered.");
+          alertService("warning", "User not destroyed", "Username does not match what you enetered.");
         }
   
       };

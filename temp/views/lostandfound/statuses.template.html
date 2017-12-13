@@ -1,0 +1,35 @@
+<h3>Lost & Found Statuses</h3>
+
+<a class="btn btn-xs btn-primary" ui-sref="lostandfound.settings.status">Add New Status</a>
+
+<br /><br />
+<div class="row" ng-hide="statuses.items.length == 0">
+    
+    <div class="col-sm-12 no-padding-left">
+
+
+        <table class="table table-condensed table-hover animated fadeILeft">
+                
+            <tr>
+
+                <th>name</th>
+                <th>description</th>
+
+            </tr>
+
+            <tr ng-repeat="status in statuses.items">
+
+                <td><a ui-sref="lostandfound.settings.status({ id: status.id })">{{ status.name }}</a></td>
+                <td>{{ status.description }}</td>
+                
+            </tr>
+        
+        </table>
+    </div>
+
+</div>
+
+
+
+
+        

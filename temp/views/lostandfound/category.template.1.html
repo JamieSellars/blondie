@@ -1,0 +1,39 @@
+<h3>Lost & Found Category</h3>
+
+<form ng-submit="category.save()" name="createCategory" novalidate="" autocomplete="off" class="animated fadeInUp">
+        
+    <div class="control-group">
+    <!-- Name -->
+    <label class="control-label" for="name">Name</label>
+    <div class="controls">
+        <input type="text" ng-model="category.category.name" class="form-control" id="name" name="name" placeholder="Category Name" required>
+    </div>
+    </div>
+
+    <!-- Description -->
+
+    <div class="control-group">
+        <label class="control-label" for="description">Description</label>
+        <div class="controls">
+        <input type="text" class="form-control" id="description" name="description" placeholder="Description" ng-model="category.category.description" required>
+        </div>
+    </div>
+
+
+    <br /><br />
+    <div class="control-group">
+    <div class="controls">
+        <button class="btn btn-success btn-block" ng-disabled="createCategory.$invalid" >
+            <span ng-if="!category.category.id">Create</span>
+            <span ng-if="category.category.id">Save</span>
+        </button>
+        <br />
+        
+    </div>
+        <h3>Dangerzone</h3>
+        <button class="btn btn-danger btn-block" ng-if="category.category.id" ng-click="category.delete()">
+            <span>Delete</span>
+        </button>
+    </div>
+
+</form>

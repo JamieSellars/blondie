@@ -26,6 +26,23 @@
             </ul>
           </li>
           <li ui-sref-active="active"><a ui-sref="settings" ng-show="main.user.isManager">Settings</a></li>
+
+          <li ui-sref-active="active">
+            
+              <ul class="nav navbar-nav">
+                  <li ui-sref-active="active" >
+                    <a href="#" class="dropdown-toggle" ui-sref-active="active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Lost & Found 
+                      <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                          <li ui-sref-active="active"><a ui-sref="lostandfound.items">Items</a></li>
+                          <li ui-sref-active="active"><a ui-sref="lostandfound.settings.categories">Settings</a></li>
+                      </ul>
+                  </li>
+                </ul>
+
+            </li>
+            
+
         </ul>
         <ul class="nav navbar-nav pull-right">
           <li ng-show="main.loggedIn">

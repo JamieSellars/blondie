@@ -1,0 +1,17 @@
+<h3>Settings</h3>
+<br />
+<ul class="nav nav-tabs" >
+    <li role="presentation" ui-sref-active="active"><a ui-sref="lostandfound.settings.categories"  aria-controls="category" role="tab">categories</a></li>    
+    <li role="presentation" ui-sref-active="active"><a ui-sref="lostandfound.settings.statuses" aria-controls="status" role="tab">statuses</a></li>
+    <li role="presentation" ui-sref-active="active"><a ui-sref="lostandfound.settings.locations" aria-controls="locations" role="tab">locations</a></li>
+</ul>
+
+<div style="margin-top: 20px;" class="alert alert-{{ alert.type }} animate main-alert" ng-class="{ 'fadeIn': alert.show, 'fadeOut': !alert.hide, 'alert-hidden':!alert.hasBeenShown }">
+    <strong>{{ alert.title }}</strong>
+    {{ alert.message }}
+</div>
+
+<!-- UI STATE DIRECTIVE -->
+<div ui-view>
+
+</div>

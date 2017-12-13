@@ -1,0 +1,29 @@
+<h3>Lost & Found Location</h3>
+
+<form ng-submit="location.save()" name="createlocation" novalidate="" autocomplete="off" class="animated fadeInUp">
+        
+    <div class="control-group">
+    <!-- Name -->
+    <label class="control-label" for="name">Name</label>
+    <div class="controls">
+        <input type="text" ng-model="location.location.name" class="form-control" id="name" name="name" placeholder="location Name" required>
+    </div>
+    </div>
+
+    <br /><br />
+    <div class="control-group">
+    <div class="controls">
+        <button class="btn btn-success btn-block" ng-disabled="createlocation.$invalid" >
+            <span ng-if="!location.location.id">Create</span>
+            <span ng-if="location.location.id">Save</span>
+        </button>
+        <br />
+        
+    </div>
+        <h3>Dangerzone</h3>
+        <button class="btn btn-danger btn-block" ng-if="location.location.id" ng-click="location.delete()">
+            <span>Delete</span>
+        </button>
+    </div>
+
+</form>

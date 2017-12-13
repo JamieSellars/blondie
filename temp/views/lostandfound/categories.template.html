@@ -1,0 +1,42 @@
+<h3>Lost & Found Categories</h3>
+
+<a class="btn btn-xs btn-primary" ui-sref="lostandfound.settings.category">Add New Category</a>
+
+<p ng-show="categories.items.length == 0">
+        
+    No items found. Please <a>Add a New Item</a>
+    
+</p>
+<br /><br />
+<div class="row" ng-hide="categories.items.length == 0">
+    
+    <div class="col-sm-12 no-padding-left">
+
+
+        <table class="table table-condensed table-hover animated fadeILeft">
+                
+            <tr>
+
+                <th>name</th>
+                <th>description</th>
+                <th>subcategory</th>                
+
+            </tr>
+
+            <tr ng-repeat="category in categories.items">
+
+                <td><a ui-sref="lostandfound.settings.category({ id: category.id })">{{ category.name }}</a></td>
+                <td>{{ category.description }}</td>
+                <td><a ui-sref="lostandfound.settings.subcategories({ id: category.id })">Subcategories</a></td>
+                
+            </tr>
+        
+        </table>
+    </div>
+
+</div>
+
+
+
+
+        

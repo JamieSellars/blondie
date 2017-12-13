@@ -5,7 +5,7 @@
         var subCategoryService = {};
     
         subCategoryService.all = function(categoryid){
-        return $http.get('/api/subcategories/' + categoryid).success(function(data){
+        return $http.get('/api/categories/' + categoryid).success(function(data){
             return data;
         });
         };

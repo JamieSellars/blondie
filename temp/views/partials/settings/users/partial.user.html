@@ -88,22 +88,22 @@
 <div ng-if="!user.formdata.isAdmin" class="animated fadeInUp">
 <h3 class="text-danger">Dangerzone</h3>
 <p>The following action will delete <strong>{{ user.username }}</strong> and cannot be reversed</p>
-<p>To destory this account, type in the {{ user.username }} and hit the <span class="label label-danger"> destory </span>&nbsp;button!
+<p>To destroy this account, type in the {{ user.username }} and hit the <span class="label label-danger"> destroy </span>&nbsp;button!
 
-<form ng-submit="user.destory()" name="userdestory">
+<form ng-submit="user.destroy()" name="userdestroy">
   <div class="control-group">
-    <!-- Destory Account Name-->
-    <label class="control-label" for="password">Destory User</label>
+    <!-- destroy Account Name-->
+    <label class="control-label" for="password">destroy User</label>
     <div class="controls">
-      <input type="text" id="destory" name="destory" class="form-control" ng-model="user.destorydata.username" required>
+      <input type="text" id="destroy" name="destroy" class="form-control" ng-model="user.destroydata.username" required>
     </div>
   </div>
   <br />
   <div class="control-group">
     <div class="controls">
-      <button class="btn btn-danger btn-block" ng-disabled="userdestory.$invalid">
-        <span ng-if="user.destory.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
-        <span ng-if="!user.destory.processing">Destory</span>
+      <button class="btn btn-danger btn-block" ng-disabled="userdestroy.$invalid">
+        <span ng-if="user.destroy.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!user.destroy.processing">destroy</span>
       </button>
     </div>
   </div>

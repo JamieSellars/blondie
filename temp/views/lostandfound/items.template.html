@@ -1,0 +1,51 @@
+<a class="btn btn-primary btn-xs" ui-sref="lostandfound.item">Add New Item</a>
+<br /><br />
+<p ng-show="items.items.length == 0">
+
+    No items found.
+    
+</p>
+
+<div class="row" ng-hide="items.items.length == 0">
+    
+    <div class="col-sm-12 no-padding-left">
+
+        <p>
+            <input type="text" placeholder="Search For Item" ng-model="items.searchTerm" />     
+            
+            
+        </p> 
+
+        <table class="table table-condensed table-hover animated fadeILeft">
+                
+            <tr>
+
+                <th>&nbsp;</th>
+                <th>contact name</th>
+                <th>category</th>
+                <th>subcategory</th>
+                <th>description</th>
+                <th>location</th>
+                <th>status</th>                
+                <th>date</th>
+
+            </tr>
+
+            <tr ng-repeat="item in items.items | filter: items.searchTerm">
+
+                <td><a ui-sref="lostandfound.item({ id: item.id })">Open Item</a></td>
+                <td>{{ item.contactName }}</td>                
+                <td>{{ item.category.name }}</td>
+                <td>{{ item.subcategory.name }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.location.name }}</td>
+                <td>{{ item.status.name }}</td>                
+                <td>{{ item.dateIn | date }}</td>
+
+            </tr>
+        
+        </table>
+    </div>
+
+</div>
+        
