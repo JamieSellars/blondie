@@ -15,14 +15,12 @@
 
     <div class="container site-body ui-view-container" ng-if="main.loggedIn">
 
-      <a class="btn btn-success btn-md" ui-sref='tickets.create'><i class="fa fa-ticket"></i> Create Full Ticket </a>
-
       <!-- UI STATE DIRECTIVE -->
       <div ui-view>
 
       </div>
 
-
+ 
     </div><!-- /.container -->
 
     <div ng-if="!main.loggedIn" ng-include src="'views/partials/partial.signin.html'"></div>
