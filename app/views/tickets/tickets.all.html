@@ -9,21 +9,14 @@
           <th>Title</th>
           <th>Category</th>
           <th>Sub Category</th>
-          <th>Source</th>
-          <th>Type</th>
-          <th>Status</th>
-          <th>Assigned To</th>
+          <th>Created By</th>
           <th>Last Updated</th>
       </tr>
       <tr ng-repeat="ticket in tickets.ticketData">
           <td><a ui-sref="tickets.view({id: ticket.id})">{{ticket.title | limitTo: 20}}</a></td>
-          <td>{{ticket.category.name}}</td>
-          <td>{{ticket.subcategory.name}}</td>
-
-          <td><span class='label label-{{ticket.source.type }}'>{{ticket.source.name}}</span></td>
-          <td><span class='label label-{{ticket.type.type }}'>{{ticket.type.name}}</span></td>
-          <td><span class='label label-{{ticket.status.type }}'>{{ticket.status.name}}</span></td>
-          <td>{{ticket.assigned.firstname + ' ' + ticket.assigned.lastname}}</td>
+          <td>{{ticket.Category}}</td>
+          <td>{{ticket.SubCategory}}</td>
+          <td>{{ticket.CreatedBy}}</td>
           <td>{{ticket.createdAt | date: 'fullDate'}}</td>
 
       </tr>

@@ -4,12 +4,13 @@
 
   <form name="quickForm" ng-submit="quick.save()" novalidate>
 
+    {{ quick.formdata }}
+
     <div class="row">
       <div class="control-group col-sm-6">
         <!-- category -->
         <label class="control-label" for="name">Category</label>
         <div class="controls">
-
           <style>
           .radio-toolbar {
             display: inline-block;
@@ -47,8 +48,8 @@
         <label class="control-label" for="name">Sub Category</label>
         <div class="controls">
           <div class="radio-toolbar" ng-repeat="subcategory in quick.properties.subcategories">
-              <input type="radio" id="cat-{{ subcategory.id}}" value="{{ subcategory.id }}" ng-model="quick.formdata.subcategory" />
-              <label class='btn btn-primary' for="cat-{{ subcategory.id}}" name="categories">{{ subcategory.name}}</label>
+              <input type="radio" id="sub-{{ subcategory.id}}" value="{{ subcategory.id }}" ng-model="quick.formdata.subcategory" />
+              <label class='btn btn-primary' for="sub-{{ subcategory.id}}" name="categories">{{ subcategory.name}}</label>
           </div>
 
         </div>
@@ -66,8 +67,8 @@
         <label class="control-label" for="name">Type of Enquiry</label>
         <div class="controls">
           <div class="radio-toolbar" ng-repeat="type in quick.properties.types">
-              <input type="radio" id="cat-{{ type.id}}" value="{{ type.id }}" ng-model="quick.formdata.type" />
-              <label class='btn btn-{{ type.type }}' for="cat-{{ type.id}}" name="types">{{ type.name}}</label>
+              <input type="radio" id="type-{{ type.id}}" value="{{ type.id }}" ng-model="quick.formdata.type" />
+              <label class='btn btn-{{ type.type }}' for="type-{{ type.id}}" name="types">{{ type.name}}</label>
           </div>
         </div>
       </div>
@@ -75,20 +76,12 @@
         <label class="control-label" for="name">Source</label>
         <div class="controls">
           <div class="radio-toolbar" ng-repeat="source in quick.properties.sources">
-              <input type="radio" id="cat-{{ source.id}}" value="{{ source.id }}" ng-model="quick.formdata.source" />
-              <label class='btn btn-{{ source.type }}' for="cat-{{ source.id}}" name="sources">{{ source.name}}</label>
+              <input type="radio" id="source-{{ source.id}}" value="{{ source.id }}" ng-model="quick.formdata.source" />
+              <label class='btn btn-{{ source.type }}' for="source-{{ source.id}}" name="sources">{{ source.name}}</label>
           </div>
         </div>
       </div>
-      <!-- <div class="control-group col-sm-12">
-        <label class="control-label" for="name">Status</label>
-        <div class="controls">
-          <div class="radio-toolbar" ng-repeat="status in quick.properties.statuses">
-              <input type="radio" id="cat-{{ status.id}}" value="{{ status.id }}" ng-model="quick.formdata.status" />
-              <label class='btn btn-{{ status.type }}' for="cat-{{ status.id}}" name="statuses">{{ status.name}}</label>
-          </div>
-        </div>
-      </div> -->
+
     </div>
 
     <br />
@@ -104,15 +97,4 @@
 
   </form>
 
-<div ng-if="quick.view">
-  <h3 class="text-danger">Dangerzone</h3>
-  <div class="control-group">
-    <div class="controls">
-      <button class="btn btn-danger btn-block" ng-click="quick.destory()">
-        <span ng-if="quick.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
-        <span ng-if="!quick.processing">Destroy quick</span>
-      </button>
-    </div>
-  </div>
-</div>
 </div>

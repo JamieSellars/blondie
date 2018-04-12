@@ -13,7 +13,7 @@
         vm.ticketData = {};
     
         ticketService.all().then(function(d){
-        vm.ticketData = d.data;
+            vm.ticketData = d.data;
         });
     
     }]);

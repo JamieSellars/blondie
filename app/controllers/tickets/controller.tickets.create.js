@@ -95,13 +95,18 @@
   
       vm = this;
       vm.title = "Quick Entry";
-      vm.formdata = {};
-  
+
+      vm.user = $rootScope.user.id;
+      vm.formdata = {
+        assigned: vm.user
+      };
+
       ticketPropertiesService.get().then(function(d){
   
         vm.properties = d.data;
   
       });
+
   
       vm.getSubCategories = function(category){
         vm.properties.subcategories = category.subcategories;
@@ -115,9 +120,10 @@
         // hard code descriptions
         vm.formdata.title = "Enquiry";
         vm.formdata.description = " ";
-        vm.formdata.status = "55d7ea90b5b8c0c027509603"; // id for closed this will need to be changed if you create a new database
-        vm.formdata.assigned = $rootScope.user.id;
-  
+        vm.formdata.status = 2; // id for closed this will need to be changed if you create a new database
+
+        vm.formdata.assigned = vm.user;        
+
         ticketService.save(vm.formdata).then(function(d){
             // Change State :: TODO
             $state.go('dashboard', {}, { reload: true });
