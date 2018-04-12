@@ -63,7 +63,7 @@
           vm.formdata.category = vm.formdata.category.id;
           ticketService.update(vm.formdata).then(function(d){
               // Change State :: TODO
-              $state.go('dashboard', {}, { reload: true });
+              $state.go('tickets.all', {}, { reload: true });
           });
   
         } else {
@@ -72,7 +72,7 @@
           vm.formdata.category = vm.formdata.category.id;
           ticketService.save(vm.formdata).then(function(d){
               // Change State :: TODO
-              $state.go('dashboard', {}, { reload: true });
+              $state.go('tickets.all', {}, { reload: true });
           });
   
         }
@@ -83,7 +83,7 @@
         var choice = confirm("Are you sure you wish to destroy this ticket", "Annihilate");
         if(choice){
           ticketService.destroy($stateParams.id).then(function(d){
-            $state.go('dashboard');
+            $state.go('tickets.all');
           });
         }
       }
@@ -126,7 +126,7 @@
 
         ticketService.save(vm.formdata).then(function(d){
             // Change State :: TODO
-            $state.go('dashboard', {}, { reload: true });
+            $state.go('tickets.all', {}, { reload: true });
         });
   
   

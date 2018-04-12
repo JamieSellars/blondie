@@ -1,6 +1,0 @@
-<h3>Tickets</h3>
-
-<!-- UI STATE DIRECTIVE -->
-<div ui-view>
-
-</div>
