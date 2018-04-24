@@ -126,7 +126,7 @@
 
         ticketService.save(vm.formdata).then(function(d){
             // Change State :: TODO
-            $state.go('tickets.all', {}, { reload: true });
+            $state.go('tickets.quick', {}, { reload: true });
         });
   
   
