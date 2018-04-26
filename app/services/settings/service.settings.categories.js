@@ -33,6 +33,11 @@
             return data;
             });
         };
+        categoryService.activate = function(categoryid){
+            return $http.put('/api/categories/activate/' + categoryid).success(function(data){
+                return data;
+            });
+        };
     
         return categoryService;
     

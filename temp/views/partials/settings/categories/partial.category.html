@@ -33,15 +33,27 @@
 <br />
 
 
-<div  class="animated fadeInUp">
-  <!-- <h3 class="text-danger">Dangerzone</h3>
-  <p>Remove this Category Type</p>
+<div  class="animated fadeInUp" ng-if="category.formdata.statusCode == 1">
+  <h3 class="text-danger">Dangerzone</h3>
+  <p>Deactive this Category</p>
   <div class="control-group">
     <div class="controls">
       <button class="btn btn-danger btn-block" ng-click="category.destroy()">
         <span ng-if="category.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
-        <span ng-if="!category.processing">Destroy</span>
+        <span ng-if="!category.processing">Deactive</span>
       </button>
     </div>
-  </div> -->
+  </div>
+</div>
+
+<div  class="animated fadeInUp" ng-if="category.formdata.statusCode == 0">
+  <p>Activate this Category</p>
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-primary btn-block" ng-click="category.activate()">
+        <span ng-if="category.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!category.processing">Activate</span>
+      </button>
+    </div>
+  </div>
 </div>

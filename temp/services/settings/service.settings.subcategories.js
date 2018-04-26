@@ -33,6 +33,12 @@
             return data;
             });
         };
+
+        subCategoryService.activate = function(subcategoryid){
+            return $http.put('/api/subcategory/activate/' + subcategoryid).success(function(data){
+                return data;
+            });
+        };
     
         return subCategoryService;
     

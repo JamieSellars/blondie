@@ -78,6 +78,12 @@
         $injector.get('$state').transitionTo('settings.subcategories', { categoryId: vm.formdata.category });
       });
     }
+
+    vm.activate = function(){
+      settingsSubCategoriesService.activate(vm.formdata.id).then(function(d){
+        $injector.get('$state').transitionTo('settings.subcategories', { categoryId: vm.formdata.category });
+      });
+    }
   
   }]);
 })();

@@ -3,14 +3,13 @@
 <form ng-submit="category.save()" name="createCategory" novalidate="" autocomplete="off" class="animated fadeInUp">
         
     <div class="control-group">
-    <!-- Name -->
-    <label class="control-label" for="name">Name</label>
+
+        <label class="control-label" for="name">Name</label>
     <div class="controls">
         <input type="text" ng-model="category.category.name" class="form-control" id="name" name="name" placeholder="Category Name" required>
     </div>
     </div>
 
-    <!-- Description -->
 
     <div class="control-group">
         <label class="control-label" for="description">Description</label>
@@ -30,9 +29,9 @@
         <br />
         
     </div>
-        <!-- <h3>Dangerzone</h3>
+        <!-- <h3>Deactivate</h3>
         <button class="btn btn-danger btn-block" ng-if="category.category.id" ng-click="category.delete()">
-            <span>Delete</span>
+            <span>Deactivate</span>
         </button> -->
     </div>
 

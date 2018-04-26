@@ -5,10 +5,15 @@
     <tr>
         <th>Name</th>
         <th>Description</th>
+        <th>Status</th>
     </tr>
     <tr ng-repeat="subCategory in settings.subCategories.all">
         <td><a ui-sref="settings.subcategory({id: subCategory.id})">{{ subCategory.name }}</a></td>
         <td>{{ subCategory.description }}</td>
+        <th>
+          <span ng-if="subCategory.statusCode == 0" class="text-muted">Deactivated</span>
+          <span ng-if="subCategory.statusCode == 1">Activated</span>
+        </th>
     </tr>
 </table>
 <!--
@@ -47,5 +52,14 @@
       </button>
     </div>
   </div>
-
+  <h3 class="text-danger">Dangerzone</h3>
+  <p>Deactive this Category Type</p>
+  <div class="control-group">
+    <div class="controls">
+      <button class="btn btn-danger btn-block" ng-click="category.destroy()">
+        <span ng-if="category.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+        <span ng-if="!category.processing">Deactive</span>
+      </button>
+    </div>
+  </div>
 </form>

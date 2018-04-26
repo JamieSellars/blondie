@@ -72,6 +72,12 @@
           $injector.get('$state').transitionTo('settings.categories');
         });
       }
+
+      vm.activate = function(){
+        settingsCategoriesService.activate(vm.formdata.id).then(function(res){
+          $injector.get('$state').transitionTo('settings.categories');
+        });
+      }
     
     }]);
-})();
+})(); 
