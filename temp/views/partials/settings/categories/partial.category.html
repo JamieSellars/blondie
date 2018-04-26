@@ -35,12 +35,12 @@
 
 <div  class="animated fadeInUp" ng-if="category.formdata.statusCode == 1">
   <h3 class="text-danger">Dangerzone</h3>
-  <p>Deactive this Category</p>
+  <p>Deactivate this Category</p>
   <div class="control-group">
     <div class="controls">
       <button class="btn btn-danger btn-block" ng-click="category.destroy()">
         <span ng-if="category.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
-        <span ng-if="!category.processing">Deactive</span>
+        <span ng-if="!category.processing">Deactivate</span>
       </button>
     </div>
   </div>
