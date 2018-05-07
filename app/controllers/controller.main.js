@@ -38,7 +38,7 @@ angular.module('app').controller('mainController', ['$scope', 'Auth', '$rootScop
         vm.user = res.data.user;
         $rootScope.user = res.data;
 
-        $state.go("dashboard", {}, { reload: true });
+        $state.go("tickets.all", {}, { reload: true });
       }, function(err){
         // Change States
         vm.signin.processing = false;

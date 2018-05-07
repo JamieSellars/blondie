@@ -24,18 +24,19 @@ angular.module('app')
 .config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider){
     // Unsatifised routes / states
     $urlRouterProvider.when('/settings', 'settings/categories');
-    $urlRouterProvider.when('/dashboard', 'dashboard/statistics/categories');
+
+    //$urlRouterProvider.when('/dashboard', 'dashboard/statistics/categories');
     //$urlRouterProvider.when('/tickets', 'tickets/all');
 
     $urlRouterProvider.otherwise("/tickets/all");
 
     // Programmed states
     $stateProvider
-      .state('dashboard', {
-          url: "/dashboard",
-          templateUrl: "views/view.dashboard.html",
-          controller: "dashboardController as dashboard"
-      })
+    //   .state('dashboard', {
+    //       url: "/dashboard",
+    //       templateUrl: "views/view.dashboard.html",
+    //       controller: "dashboardController as dashboard"
+    //   })
 
       /**
       *   @description: DASHBOARD STATISTICS
