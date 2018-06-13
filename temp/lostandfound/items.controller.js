@@ -2,7 +2,13 @@
     
         'use-strict';
     
-        angular.module('app').controller('LostandFoundItemsController', ['lostandfoundService', function(lostandfoundService) {
+        angular
+            .module('app')
+            .controller('LostandFoundItemsController', 
+            
+            ['lostandfoundService', 
+            
+            function(lostandfoundService) {
        
             vm = this;
             vm.items = [];

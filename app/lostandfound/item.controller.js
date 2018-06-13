@@ -2,8 +2,10 @@
     
     'use-strict';
 
-    angular.module('app').controller('LostandFoundItemController', 
-    
+    angular
+        .module('app')
+        .controller('LostandFoundItemController', 
+
     ['lostandfoundService','$stateParams','$state',
     
     function(lostandfoundService,$stateParams,$state) {
@@ -25,7 +27,9 @@
         });
 
         vm.setSubcategories = function(item){
-            vm.subcategories = vm.properties.categories.filter( x=> x.id == item )[0].subcategories;
+            vm.subcategories = vm.properties.categories.filter(function(x) {
+                return x.id == item 
+            })[0].subcategories;
         }
 
         vm.save = function() {
