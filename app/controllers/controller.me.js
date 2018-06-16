@@ -6,7 +6,11 @@
 **/
 (function(){
     'use-stict';
-angular.module('app').controller('meController', ['$scope','settingsUserService','alertService', function($scope,settingsUserService,alertService){
+angular.module('app').controller('meController',
+
+['$scope','settingsUserService','alertService', 
+
+function($scope,settingsUserService,alertService){
 
     vm = this;
     vm.title = "change password";

@@ -32,11 +32,13 @@ angular.module('app')
 
     // Programmed states
     $stateProvider
-    //   .state('dashboard', {
-    //       url: "/dashboard",
-    //       templateUrl: "views/view.dashboard.html",
-    //       controller: "dashboardController as dashboard"
-    //   })
+
+    // authentication
+    .state('signin', {
+        url: "/signin", // UI will show login window
+        templateUrl: "views/partials/partial.signin.html",
+        controller: "AuthenticationController as auth"
+    })
 
       /**
       *   @description: DASHBOARD STATISTICS
@@ -270,15 +272,11 @@ angular.module('app')
  
  
 
-    // authentication
-    .state('signin', {
-        url: "/signin", // UI will show login window
-        templateUrl: "views/view.home.html"
-    })
+
     .state('changepassword', {
-        url: "/changepassword", // UI will show login window
+        url: "/changepassword", 
         templateUrl: "views/partials/me/partial.changepassword.html",
-        controller: "meController as me"
+        controllerAs: "meController as me"
     })
     // Error Pages
     .state('403', {

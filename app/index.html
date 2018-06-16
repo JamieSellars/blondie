@@ -11,9 +11,9 @@
 </head>
 <body ng-controller="mainController as main">
 
-    <div ng-include src="'views/partials/partial.mainmenu.html'" ng-if="main.loggedIn"></div>
+    <div ng-include src="'views/partials/partial.mainmenu.html'"></div>
 
-    <div class="container site-body ui-view-container" ng-if="main.loggedIn">
+    <div class="container site-body ui-view-container">
 
       <!-- UI STATE DIRECTIVE -->
       <div ui-view>
@@ -23,7 +23,7 @@
  
     </div><!-- /.container -->
 
-    <div ng-if="!main.loggedIn" ng-include src="'views/partials/partial.signin.html'"></div>
+    <!-- <div ng-if="!main.loggedIn" ng-include src="'views/partials/partial.signin.html'"></div> -->
 
   <!-- vendorInject:js -->
   <!-- endinject -->

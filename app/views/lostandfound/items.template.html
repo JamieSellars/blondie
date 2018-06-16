@@ -23,7 +23,6 @@
                 <th>&nbsp;</th>
                 <th>contact name</th>
                 <th>category</th>
-                <th>subcategory</th>
                 <th>item</th>
                 <th>location</th>
                 <th>status</th>                
@@ -35,11 +34,10 @@
 
                 <td><a ui-sref="lostandfound.item({ id: item.id })">Open Item</a></td>
                 <td>{{ item.contactName }}</td>                
-                <td>{{ item.category.name }}</td>
-                <td>{{ item.subcategory.name }}</td>
+                <td>{{ item.Category }}</td>
                 <td>{{ item.itemName }}</td>
-                <td>{{ item.location.name }}</td>
-                <td>{{ item.status.name }}</td>                
+                <td>{{ item.Location}}</td>
+                <td>{{ item.Status }}</td>                
                 <td>{{ item.dateIn | date }}</td>
 
             </tr>

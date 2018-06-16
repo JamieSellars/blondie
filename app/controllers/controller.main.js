@@ -9,7 +9,13 @@
 angular.module('app').controller('mainController', ['$scope', 'Auth', '$rootScope','$state', '$window', function($scope, Auth, $rootScope, $state, $window){
 
     vm = this;
-    vm.signin = {}
+    vm.signin = {
+      username: null,
+      password: null,
+      error: null,
+      processing: null,
+      errorMsg: null
+    }
 
     /**
     * @description: authentication actions
@@ -18,8 +24,7 @@ angular.module('app').controller('mainController', ['$scope', 'Auth', '$rootScop
 
     if(vm.loggedIn) {
       Auth.getUser().then(function(res){
-        vm.user = res.data[0];
-        
+        vm.user = res.data[0];        
         $rootScope.user = vm.user;
       });
     }
@@ -29,6 +34,15 @@ angular.module('app').controller('mainController', ['$scope', 'Auth', '$rootScop
     });
 
     vm.authenticate = function(){
+
+     
+      if( vm.signin == null ) {
+        vm.signin = {
+          error: null,
+          processing: null,
+          errorMsg: null
+        }
+      }
       // Change States
       vm.signin.error = false;
       vm.signin.processing = true;

@@ -1,6 +1,6 @@
 <h3>Lost & Found Item</h3>
 
-<form ng-submit="item.save()" name="createItem" novalidate="" autocomplete="off" class="animated fadeInUp">
+<form ng-submit="item.save(createItem.$valid)" name="createItem" novalidate autocomplete="off" class="animated fadeInUp">
         
     <div class="row">
 
@@ -23,19 +23,18 @@
     </div>
 
 
-
-    <div class="control-group">
+    <div class="control-group" ng-class="{ 'has-error': createItem.name.$invalid && !createItem.name.$pristine  }" >
     <!-- Name -->
-    <label class="control-label" for="name">Item Name</label>
+    <label class="control-label" for="name">Item Name  <span class="text-danger">*</span></label>
     <div class="controls">
-        <input type="text" ng-model="item.item.itemName" class="form-control" id="name" name="name" placeholder="Item Name" required>
+        <input type="tel" ng-model="item.item.itemName" class="form-control"id="name" name="name" placeholder="Item Name" required>
     </div>
     </div>
 
     <!-- Description -->
 
     <div class="control-group">
-        <label class="control-label" for="description">Item Description</label>
+        <label class="control-label" for="description">Item Description  <span class="text-danger">*</span></label>
         <div class="controls">
         <input type="text" class="form-control" id="description" name="description" placeholder="Description" ng-model="item.item.description" required>
         </div>
@@ -46,14 +45,14 @@
 
     
         <div class="control-group col-xs-4">
-            <label class="control-label" for="description">Contact Name</label>
+            <label class="control-label" for="description">Contact Name  <span class="text-danger">*</span></label>
             <div class="controls">
-            <input type="text" class="form-control" id="name" name="name" placeholder="Description" ng-model="item.item.contactName" required>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Description" ng-model="item.item.contactName" ng-required>
             </div>
         </div>
 
         <div class="control-group col-xs-4">
-                <label class="control-label" for="description">Contact Number</label>
+                <label class="control-label" for="description">Contact Number  <span class="text-danger">*</span></label>
             <div class="controls">
             <input type="text" class="form-control" id="contactNumber" name="contactNumber" placeholder="Contact Number" ng-model="item.item.contactNumber" required>
             </div>
@@ -74,7 +73,7 @@
                 
         <div class="control-group col-xs-3">
             
-            <label class="control-label" for="description">Category</label>
+            <label class="control-label" for="description">Category <span class="text-danger">*</span></label>
                 
             <select class="form-control" ng-model="item.item.category" placeholder="Category" 
                 ng-options="category.id as category.name for category in item.properties.categories" 
@@ -95,7 +94,7 @@
         </div>
 
         <div class="control-group col-xs-3">
-                <label class="control-label" for="description">Status</label>
+                <label class="control-label" for="description">Status  <span class="text-danger">*</span></label>
                 
             <select class="form-control" ng-model="item.item.status" placeholder="status"
                 ng-options="status.id as status.name for status in item.properties.statuses" required>
@@ -103,7 +102,7 @@
         </div>
 
         <div class="control-group col-xs-3">
-                <label class="control-label" for="description">Location</label>
+                <label class="control-label" for="description">Location  <span class="text-danger">*</span></label>
                 
             <select class="form-control" ng-model="item.item.location" placeholder="location"
                 ng-options="location.id as location.name for location in item.properties.locations" required>
@@ -113,26 +112,20 @@
     </div>
 
 
-            
-
-
-    
-
-
-    <br /><br />
-    <div class="control-group">
-    <div class="controls">
-        <button class="btn btn-success btn-block" ng-disabled="createItem.$invalid" >
-            <span ng-if="!item.item.id">Create</span>
-            <span ng-if="item.item.id">Save</span>
-        </button>
-        <br />
-        
+    <div class="alert alert-danger" ng-if="createItem.$invalid && saveAttempted">
+        <p>Entry Form contains a few errors.</p>
     </div>
-        <!-- <h3>Dangerzone</h3>
-        <button class="btn btn-danger btn-block" ng-if="item.item.id" ng-click="item.delete()">
-            <span>Delete</span>
-        </button> -->
+
+    <div class="control-group">
+        <br />
+        <div class="controls">
+            <button class="btn btn-success btn-block">
+                <span ng-if="!item.item.id">Create</span>
+                <span ng-if="item.item.id">Save</span>
+            </button>
+            <br />
+            
+        </div>
     </div>
 
 </form>

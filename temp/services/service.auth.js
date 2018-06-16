@@ -90,14 +90,18 @@
     authInterceptor.responseError = function(response) {
   
       // if response contains error
+      
       if(response.status == 401){
         // NOT AUTHENTICATION
         AuthToken.set();
-        //$state.go('/signin');
+        console.log('redirect to signin')
+        $injector.get('$state').go('signin');
         return $q.reject(response);
       }
+
       if(response.status == 403){
-        $injector.get('$state').transitionTo('403');
+        
+        $injector.get('$state').transitionTo('signin');
   
         return $q.reject(response);
       }

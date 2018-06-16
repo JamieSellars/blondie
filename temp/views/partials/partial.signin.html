@@ -1,18 +1,18 @@
 <div class="container site-body">
 
-    <form class="form-signin" name="formsignin" novalidate ng-submit="main.authenticate()">
+    <form class="form-signin" name="formsignin" novalidate ng-submit="auth.authenticate()">
 
         <h3 class="form-signin-heading text-muted"><i class="fa fa-phone fa-3x text-muted"></i> blondie</h3>
         <h1 class="form-signin-heading text-muted">sign in <i class="small fa fa-sign-in text-primary"></i></h1>
 
-        <div ng-show="main.signin.error" class="alert alert-danger btn-block animated  flipInX">{{ main.signin.errorMsg }}</div>
+        <div ng-show="auth.signin.error" class="alert alert-danger btn-block animated  flipInX">{{ auth.signin.errorMsg }}</div>
 
-        <input type="text" class="form-control" placeholder="username" required="" autofocus="" ng-model="main.signin.username">
-        <input type="password" class="form-control" placeholder="password" required="" ng-model="main.signin.password">
+        <input type="text" class="form-control" placeholder="username" required="" autofocus="" ng-model="auth.signin.username">
+        <input type="password" class="form-control" placeholder="password" required="" ng-model="auth.signin.password">
 
         <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="formsignin.$invalid">
-            <span ng-show="main.signin.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
-            <span ng-show="!main.signin.processing"><i class="fa fa-rocket"></i> launch</span>
+            <span ng-show="auth.signin.processing"><i class="fa fa-spin fa-circle-o-notch"></i></span>
+            <span ng-show="!auth.signin.processing"><i class="fa fa-rocket"></i> launch</span>
         </button>
 
     </form>

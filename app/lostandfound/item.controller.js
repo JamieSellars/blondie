@@ -13,6 +13,7 @@
         vm = this;
 
         vm.item = {};
+        vm.saveAttempted = false;
         vm.properties = {};
 
         if( $stateParams.id.length > 0 && $stateParams.id != "new" )
@@ -32,7 +33,12 @@
             })[0].subcategories;
         }
 
-        vm.save = function() {
+        vm.save = function(isValid) {
+
+            vm.saveAttempted = true;
+
+            if( !isValid ) 
+                return
 
             if( vm.item.id ) {
                 update();

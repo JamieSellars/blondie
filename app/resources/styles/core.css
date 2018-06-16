@@ -107,3 +107,10 @@ to prevent collapsing during animation*/
 .alert-hidden {
     visibility: hidden;
 }
+
+.control-group .has-error {
+
+  color: red;
+  
+  
+}
